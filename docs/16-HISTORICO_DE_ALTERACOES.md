@@ -6,6 +6,40 @@
 
 ---
 
+## [Etapa 05] — Content Lead & SEO On-Page
+
+- **Data**: etapa 05
+- **Responsável**: Content Lead e Especialista em SEO On-Page
+- **Tipo**: Conteúdo (baixo risco — apenas correções pontuais de texto em `tools.ts`)
+
+### Resumo
+Auditoria do conteúdo das 32 ferramentas (7 critérios: SEO, Conteúdo, Legibilidade, UX, Organização, Originalidade, Precisão). Nota média 9,0/10. Apenas 4 ferramentas necessitaram correção: 1 erro matemático no FAQ do conversor-temperatura ("20 °C → 36 × ... → 68 °F" reescrito como 20×9=180; 180÷5=36; 36+32=68) e 3 exemplos vagos sem número concreto (calculadora-salario-liquido, calculadora-idade, conversor-moedas) substituídos por exemplos numéricos. Nenhuma ferramenta reescrita — apenas campos defeituosos corrigidos. Após FASE 3, todas as 32 aprovadas.
+
+### Arquivos modificados
+- `src/data/tools.ts` — 4 correções pontuais: FAQ de `conversor-temperatura`; `example` de `calculadora-salario-liquido`, `calculadora-idade`, `conversor-moedas`; indentação de 1 benefit em `conversor-temperatura`
+
+### Arquivos criados
+- `docs/CONTENT_AUDIT.md` (notas pré-correção)
+- `docs/QUALITY_REPORT.md` (notas pós-correção)
+- `docs/RELATORIO_ETAPA_05.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ limpo
+- `bunx tsc --noEmit` (`src/`) → ✅ sem erros
+- Dev server → ✅ rotas 200
+- curl nas 4 ferramentas alteradas → conteúdo corrigido servido (incluindo JSON-LD FAQ schema)
+- Title SEO (Etapa 04) preservado — sem duplicação "Toolium | Toolium"
+- 28 ferramentas não tocadas permanecem intactas
+- Build real não executado (restrição de ambiente); alterações são apenas strings de conteúdo — impacto nulo
+
+### Itens adiados
+- Nenhum (todos os 4 problemas identificados foram corrigidos)
+
+---
+
 ## [Etapa 04] — SEO Técnico e Indexação
 
 - **Data**: etapa 04

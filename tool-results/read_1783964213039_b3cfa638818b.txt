@@ -1,0 +1,1765 @@
+     1→import type { CategorySlug } from "./categories"
+     2→
+     3→export interface ToolFaq {
+     4→  q: string
+     5→  a: string
+     6→}
+     7→
+     8→export interface ToolContentBlock {
+     9→  heading?: string
+    10→  paragraphs: string[]
+    11→}
+    12→
+    13→export interface Tool {
+    14→  slug: string
+    15→  title: string
+    16→  name: string
+    17→  category: CategorySlug
+    18→  icon: string
+    19→  tagline: string
+    20→  description: string
+    21→  keywords: string[]
+    22→  intro: string
+    23→  content: ToolContentBlock[]
+    24→  howTo: string[]
+    25→  example: string
+    26→  benefits: string[]
+    27→  faq: ToolFaq[]
+    28→  popular?: boolean
+    29→  /** optional How-To structured steps for HowTo schema */
+    30→  howToSteps?: string[]
+    31→}
+    32→
+    33→export const tools: Tool[] = [
+    34→  // ===================== CALCULADORAS =====================
+    35→  {
+    36→    slug: "calculadora-porcentagem",
+    37→    title: "Calculadora de Porcentagem",
+    38→    name: "Porcentagem",
+    39→    category: "calculadoras",
+    40→    icon: "Percent",
+    41→    tagline: "Calcule porcentagem, aumento e desconto em segundos.",
+    42→    description:
+    43→      "Calculadora de porcentagem online grátis. Descubra quanto é X% de um valor, aumento e desconto percentual de forma rápida e precisa.",
+    44→    keywords: [
+    45→      "calculadora de porcentagem",
+    46→      "calcular porcentagem",
+    47→      "porcentagem online",
+    48→      "aumento percentual",
+    49→      "desconto percentual",
+    50→    ],
+    51→    intro:
+    52→      "Calcule qualquer porcentagem em segundos: quanto é X% de um valor, aumento percentual e desconto. Simples, preciso e 100% gratuito.",
+    53→    content: [
+    54→      {
+    55→        heading: "O que é porcentagem e como funciona",
+    56→        paragraphs: [
+    57→          "Porcentagem é uma forma de expressar uma proporção em relação a 100. O símbolo % significa \"por cento\", ou seja, dividir por 100. Quando dizemos 20%, estamos falando de 20 partes em cada 100.",
+    58→          "A calculadora de porcentagem do Toolium resolve os três cálculos mais comuns do dia a dia: descobrir quanto um percentual representa de um valor, calcular um aumento e calcular um desconto — sem precisar lembrar de fórmulas.",
+    59→        ],
+    60→      },
+    61→      {
+    62→        heading: "Fórmulas utilizadas",
+    63→        paragraphs: [
+    64→          "Para calcular X% de um valor: (porcentagem ÷ 100) × valor.",
+    65→          "Para calcular aumento: valor + (porcentagem ÷ 100) × valor.",
+    66→          "Para calcular desconto: valor − (porcentagem ÷ 100) × valor.",
+    67→          "Essas três operações cobrem a maioria das situações práticas, de promoções de loja a reajustes de salário.",
+    68→        ],
+    69→      },
+    70→    ],
+    71→    howTo: [
+    72→      "Escolha o tipo de cálculo: porcentagem de um valor, aumento ou desconto.",
+    73→      "Digite o valor base e o percentual desejado.",
+    74→      "O resultado aparece automaticamente, sem precisar clicar em calcular.",
+    75→    ],
+    76→    example:
+    77→      "Exemplo: 15% de 200 é igual a 30. Um desconto de 15% sobre um produto de R$ 200 resulta em R$ 170.",
+    78→    benefits: [
+    79→      "Resultados instantâneos enquanto você digita",
+    80→      "Três modos de cálculo na mesma tela",
+    81→      "Útil para compras, salários, impostos e estudos",
+    82→    ],
+    83→    faq: [
+    84→      {
+    85→        q: "Como calcular porcentagem sem calculadora?",
+    86→        a: "Divida o percentual por 100 e multiplique pelo valor. Por exemplo, 20% de 50: 20 ÷ 100 = 0,2, depois 0,2 × 50 = 10.",
+    87→      },
+    88→      {
+    89→        q: "A calculadora de porcentagem é gratuita?",
+    90→        a: "Sim, é 100% gratuita e não exige cadastro. Use quantas vezes quiser.",
+    91→      },
+    92→      {
+    93→        q: "Como calcular desconto de uma promoção?",
+    94→        a: "Use o modo \"desconto\", informe o preço original e o percentual de desconto. O resultado mostra o valor do abatimento e o preço final.",
+    95→      },
+    96→    ],
+    97→    popular: true,
+    98→    howToSteps: [
+    99→      "Selecione o tipo de cálculo de porcentagem desejado.",
+   100→      "Informe o valor base e a porcentagem.",
+   101→      "Leia o resultado exibido automaticamente.",
+   102→    ],
+   103→  },
+   104→  {
+   105→    slug: "calculadora-juros-compostos",
+   106→    title: "Calculadora de Juros Compostos",
+   107→    name: "Juros Compostos",
+   108→    category: "calculadoras",
+   109→    icon: "TrendingUp",
+   110→    tagline: "Veja quanto seu dinheiro renderá com juros compostos.",
+   111→    description:
+   112→      "Calculadora de juros compostos online grátis. Simule investimentos com aportes mensais e veja o montante final, juros totais e gráfico de evolução.",
+   113→    keywords: [
+   114→      "calculadora de juros compostos",
+   115→      "juros compostos online",
+   116→      "simulador de investimento",
+   117→      "calcular juros compostos",
+   118→      "montante juros compostos",
+   119→    ],
+   120→    intro:
+   121→      "Simule seus investimentos com juros compostos. Informe valor inicial, aporte mensal, taxa e prazo para ver o montante final e quanto renderá em juros.",
+   122→    content: [
+   123→      {
+   124→        heading: "O que são juros compostos",
+   125→        paragraphs: [
+   126→          "Juros compostos são calculados sobre o montante acumulado, ou seja, os juros geram novos juros a cada período. É o modelo usado pela maioria dos investimentos e empréstimos.",
+   127→          "Por isso, o tempo é o maior aliado de quem investe: quanto mais cedo você começa, mais os juros se multiplicam. Albert Einstein teria chamado os juros compostos de \"a oitava maravilha do mundo\".",
+   128→        ],
+   129→      },
+   130→      {
+   131→        heading: "Fórmula dos juros compostos",
+   132→        paragraphs: [
+   133→          "Montante = valorInicial × (1 + i)^n + aporteMensal × [((1 + i)^n − 1) ÷ i]",
+   134→          "Onde i é a taxa por período (em decimal) e n é o número de períodos. Os aportes mensais são somados considerando juros sobre cada depósito.",
+   135→        ],
+   136→      },
+   137→    ],
+   138→    howTo: [
+   139→      "Digite o valor inicial do investimento.",
+   140→      "Informe o aporte mensal (se houver).",
+   141→      "Defina a taxa de juros ao mês ou ao ano.",
+   142→      "Escolha o prazo em meses ou anos.",
+   143→      "Veja o montante final, o total investido e os juros ganhos.",
+   144→    ],
+   145→    example:
+   146→      "Exemplo: R$ 1.000 iniciais + R$ 200 por mês a 1% ao mês por 12 meses gera um montante de aproximadamente R$ 3.570,00, dos quais cerca de R$ 170 são juros.",
+   147→    benefits: [
+   148→      "Simula aportes mensais e valor inicial juntos",
+   149→      "Mostra total investido e total de juros separadamente",
+   150→      "Ajuda a planejar metas financeiras de longo prazo",
+   151→    ],
+   152→    faq: [
+   153→      {
+   154→        q: "Qual a diferença entre juros simples e compostos?",
+   155→        a: "Nos juros simples, a taxa incide sempre sobre o valor inicial. Nos compostos, incide sobre o saldo acumulado, gerando juros sobre juros e crescendo mais rápido.",
+   156→      },
+   157→      {
+   158→        q: "A taxa deve ser ao mês ou ao ano?",
+   159→        a: "Você pode escolher. O importante é que a taxa e o prazo estejam na mesma unidade de tempo para o cálculo estar correto.",
+   160→      },
+   161→      {
+   162→        q: "Posso simular aportes mensais?",
+   163→        a: "Sim. Informe o valor do aporte mensal e a calculadora considera cada depósito rendendo a partir do mês em que é feito.",
+   164→      },
+   165→    ],
+   166→    popular: true,
+   167→    howToSteps: [
+   168→      "Informe o valor inicial do investimento.",
+   169→      "Informe o aporte mensal e a taxa de juros.",
+   170→      "Defina o prazo e leia o montante final e os juros ganhos.",
+   171→    ],
+   172→  },
+   173→  {
+   174→    slug: "calculadora-juros-simples",
+   175→    title: "Calculadora de Juros Simples",
+   176→    name: "Juros Simples",
+   177→    category: "calculadoras",
+   178→    icon: "Banknote",
+   179→    tagline: "Calcule juros simples de forma direta e sem erro.",
+   180→    description:
+   181→      "Calculadora de juros simples online grátis. Descubra os juros e o montante final informando capital, taxa e tempo.",
+   182→    keywords: [
+   183→      "calculadora de juros simples",
+   184→      "juros simples online",
+   185→      "calcular juros simples",
+   186→      "fórmula juros simples",
+   187→    ],
+   188→    intro:
+   189→      "Calcule juros simples informando capital, taxa e tempo. Veja o valor dos juros e o montante total na hora.",
+   190→    content: [
+   191→      {
+   192→        heading: "O que são juros simples",
+   193→        paragraphs: [
+   194→          "Nos juros simples, a taxa de juros incide sempre sobre o valor inicial (capital). Isso significa que o valor dos juros é o mesmo a cada período.",
+   195→          "É comum em financiamentos de curto prazo e em algumas modalidades de empréstimo. Para investimentos de longo prazo, os juros compostos costumam ser mais vantajosos.",
+   196→        ],
+   197→      },
+   198→      {
+   199→        heading: "Fórmula dos juros simples",
+   200→        paragraphs: [
+   201→          "Juros = Capital × Taxa × Tempo",
+   202→          "Montante = Capital + Juros",
+   203→          "Atenção: a taxa e o tempo precisam estar na mesma unidade. Se a taxa for ao mês, o tempo deve ser em meses.",
+   204→        ],
+   205→      },
+   206→    ],
+   207→    howTo: [
+   208→      "Digite o capital (valor inicial).",
+   209→      "Informe a taxa de juros (ao mês ou ao ano).",
+   210→      "Defina o tempo, na mesma unidade da taxa.",
+   211→      "Veja os juros e o montante total automaticamente.",
+   212→    ],
+   213→    example:
+   214→      "Exemplo: R$ 1.000 a 2% ao mês por 6 meses gera R$ 120 de juros e um montante de R$ 1.120.",
+   215→    benefits: [
+   216→      "Cálculo direto e transparente",
+   217→      "Mostra juros e montante separadamente",
+   218→      "Ideal para empréstimos de curto prazo",
+   219→    ],
+   220→    faq: [
+   221→      {
+   222→        q: "Quando usar juros simples?",
+   223→        a: "Use quando a taxa incidir sempre sobre o valor original, geralmente em operações de curto prazo como algumas modalidades de empréstimo e venda a prazo.",
+   224→      },
+   225→      {
+   226→        q: "Posso misturar taxa ao mês com tempo em anos?",
+   227→        a: "Não diretamente. Converta para a mesma unidade antes de calcular para obter o resultado correto.",
+   228→      },
+   229→    ],
+   230→  },
+   231→  {
+   232→    slug: "calculadora-financiamento",
+   233→    title: "Calculadora de Financiamento",
+   234→    name: "Financiamento",
+   235→    category: "calculadoras",
+   236→    icon: "Landmark",
+   237→    tagline: "Simule parcelas e custos totais do seu financiamento.",
+   238→    description:
+   239→      "Calculadora de financiamento online grátis. Simule parcelas pela Tabela Price, valor total e total de juros do seu empréstimo.",
+   240→    keywords: [
+   241→      "calculadora de financiamento",
+   242→      "tabela price",
+   243→      "calcular parcela financiamento",
+   244→      "simulador de empréstimo",
+   245→      "financiamento online",
+   246→    ],
+   247→    intro:
+   248→      "Simule o valor das parcelas do seu financiamento usando o sistema Price. Informe o valor, a taxa e o número de parcelas para ver o custo total.",
+   249→    content: [
+   250→      {
+   251→        heading: "Como funciona a Tabela Price",
+   252→        paragraphs: [
+   253→          "Na Tabela Price, as parcelas são fixas durante todo o prazo. No início, a maior parte da parcela paga juros; com o tempo, a proporção se inverte e mais vai para a amortização do principal.",
+   254→          "É o sistema mais comum em financiamentos imobiliários e de veículos. A calculadora usa a fórmula padrão da prestação fixa.",
+   255→        ],
+   256→      },
+   257→      {
+   258→        heading: "Fórmula da parcela Price",
+   259→        paragraphs: [
+   260→          "Parcela = Principal × [i × (1 + i)^n] ÷ [(1 + i)^n − 1]",
+   261→          "Onde i é a taxa por período e n é o número de parcelas. A calculadora faz essa conta e ainda mostra o total de juros pagos.",
+   262→        ],
+   263→      },
+   264→    ],
+   265→    howTo: [
+   266→      "Digite o valor a ser financiado.",
+   267→      "Informe a taxa de juros por período.",
+   268→      "Defina o número de parcelas.",
+   269→      "Veja o valor da parcela, o total pago e os juros totais.",
+   270→    ],
+   271→    example:
+   272→      "Exemplo: R$ 20.000 em 24 parcelas a 1,5% ao mês gera parcelas de aproximadamente R$ 999,48 e um total pago de cerca de R$ 23.987.",
+   273→    benefits: [
+   274→      "Calcula parcela fixa pela Tabela Price",
+   275→      "Mostra custo total e juros pagos",
+   276→      "Útil para comparar diferentes prazos e taxas",
+   277→    ],
+   278→    faq: [
+   279→      {
+   280→        q: "A calculadora considera seguros e tarifas?",
+   281→        a: "Não. O cálculo considera apenas o principal, a taxa e o número de parcelas. Em um financiamento real, podem haver seguros e tarifas adicionais.",
+   282→      },
+   283→      {
+   284→        q: "Tabela Price e SAC são iguais?",
+   285→        a: "Não. Na Price as parcelas são fixas; no SAC as parcelas diminuem ao longo do tempo, pois a amortização do principal é constante.",
+   286→      },
+   287→    ],
+   288→  },
+   289→  {
+   290→    slug: "calculadora-desconto",
+   291→    title: "Calculadora de Desconto",
+   292→    name: "Desconto",
+   293→    category: "calculadoras",
+   294→    icon: "BadgePercent",
+   295→    tagline: "Descubra o preço final de qualquer promoção.",
+   296→    description:
+   297→      "Calculadora de desconto online grátis. Saiba o valor do desconto e o preço final a partir do preço original e do percentual de desconto.",
+   298→    keywords: [
+   299→      "calculadora de desconto",
+   300→      "calcular desconto",
+   301→      "preço com desconto",
+   302→      "promoção",
+   303→      "desconto percentual",
+   304→    ],
+   305→    intro:
+   306→      "Calcule o desconto de qualquer produto informando o preço original e o percentual. Veja na hora quanto você economiza e o preço final.",
+   307→    content: [
+   308→      {
+   309→        heading: "Como calcular desconto",
+   310→        paragraphs: [
+   311→          "Para calcular um desconto, multiplique o preço original pelo percentual de desconto dividido por 100. Esse é o valor que será abatido.",
+   312→          "Em seguida, subtraia esse valor do preço original para obter o preço final. A calculadora faz ambos os passos automaticamente.",
+   313→        ],
+   314→      },
+   315→    ],
+   316→    howTo: [
+   317→      "Digite o preço original do produto.",
+   318→      "Informe o percentual de desconto.",
+   319→      "Veja o valor do desconto e o preço final.",
+   320→    ],
+   321→    example:
+   322→      "Exemplo: um produto de R$ 250 com 30% de desconto fica por R$ 175, com economia de R$ 75.",
+   323→    benefits: [
+   324→      "Mostra economia e preço final",
+   325→      "Aceita descontos cumulativos com dois cálculos",
+   326→      "Essencial para compras em promoções",
+   327→    ],
+   328→    faq: [
+   329→      {
+   330→        q: "Como calcular dois descontos juntos?",
+   331→        a: "Aplique o primeiro desconto sobre o preço original e, depois, o segundo sobre o resultado. Cada desconto incide sobre o valor já reduzido.",
+   332→      },
+   333→      {
+   334→        q: "Como achar o percentual de desconto?",
+   335→        a: "Divida a diferença entre o preço original e o final pelo preço original e multiplique por 100.",
+   336→      },
+   337→    ],
+   338→  },
+   339→  {
+   340→    slug: "calculadora-regra-tres",
+   341→    title: "Calculadora Regra de Três",
+   342→    name: "Regra de Três",
+   343→    category: "calculadoras",
+   344→    icon: "Scale",
+   345→    tagline: "Resolva proporções diretas e inversas rapidamente.",
+   346→    description:
+   347→      "Calculadora de regra de três online grátis. Resolva proporções diretas e inversas com três valores conhecidos de forma rápida e sem erro.",
+   348→    keywords: [
+   349→      "calculadora regra de três",
+   350→      "regra de três online",
+   351→      "proporção direta",
+   352→      "proporção inversa",
+   353→      "calcular regra de três",
+   354→    ],
+   355→    intro:
+   356→      "Resolva uma regra de três informando três valores. Escolha entre proporção direta ou inversa e obtenha o quarto valor na hora.",
+   357→    content: [
+   358→      {
+   359→        heading: "O que é regra de três",
+   360→        paragraphs: [
+   361→          "A regra de três é um método para encontrar um quarto valor a partir de três conhecidos, quando existe uma relação de proporcionalidade entre eles.",
+   362→          "Na proporção direta, quando um valor aumenta, o outro também aumenta. Na inversa, quando um aumenta, o outro diminui na mesma proporção.",
+   363→        ],
+   364→      },
+   365→      {
+   366→        heading: "Fórmulas",
+   367→        paragraphs: [
+   368→          "Direta: x = (b × c) ÷ a",
+   369→          "Inversa: x = (a × c) ÷ b",
+   370→          "A calculadora aplica a fórmula correta conforme o tipo selecionado.",
+   371→        ],
+   372→      },
+   373→    ],
+   374→    howTo: [
+   375→      "Informe os três valores conhecidos (A, B e C).",
+   376→      "Selecione se a proporção é direta ou inversa.",
+   377→      "Veja o valor de X calculado automaticamente.",
+   378→    ],
+   379→    example:
+   380→      "Exemplo direto: se 2 cadernos custam R$ 14, então 5 cadernos custam R$ 35.",
+   381→    benefits: [
+   382→      "Resolve direta e inversa na mesma tela",
+   383→      "Útil para matemática, finanças e estudos",
+   384→      "Resultado instantâneo",
+   385→    ],
+   386→    faq: [
+   387→      {
+   388→        q: "Quando usar regra de três inversa?",
+   389→        a: "Quando as grandezas são inversamente proporcionais: por exemplo, mais operários trabalhando levam menos tempo para concluir a mesma obra.",
+   390→      },
+   391→      {
+   392→        q: "A calculadora resolve regra de três composta?",
+   393→        a: "Esta versão resolve regra de três simples (direta e inversa). Para composta, divida o problema em etapas.",
+   394→      },
+   395→    ],
+   396→  },
+   397→  {
+   398→    slug: "calculadora-salario-liquido",
+   399→    title: "Calculadora Salário Líquido",
+   400→    name: "Salário Líquido",
+   401→    category: "calculadoras",
+   402→    icon: "Wallet",
+   403→    tagline: "Estime seu salário líquido com INSS e IRRF.",
+   404→    description:
+   405→      "Calculadora de salário líquido online grátis. Estime o valor líquido considerando descontos de INSS e IRRF de acordo com a tabela vigente.",
+   406→    keywords: [
+   407→      "calculadora salário líquido",
+   408→      "calcular salário líquido",
+   409→      "INSS",
+   410→      "IRRF",
+   411→      "desconto salário",
+   412→    ],
+   413→    intro:
+   414→      "Estime seu salário líquido informando o salário bruto. A calculadora aplica as faixas de INSS e IRRF conforme a tabela vigente.",
+   415→    content: [
+   416→      {
+   417→        heading: "Como é calculado o salário líquido",
+   418→        paragraphs: [
+   419→          "O salário líquido é o valor que cai na conta após os descontos obrigatórios. Para CLT, os principais são o INSS e o Imposto de Renda (IRRF).",
+   420→          "O INSS é calculado por faixas progressivas sobre o salário bruto. O IRRF incide sobre o que sobra após o INSS e, se houver, dependentes. A calculadora usa valores de referência atuais.",
+   421→        ],
+   422→      },
+   423→      {
+   424→        heading: "Aviso importante",
+   425→        paragraphs: [
+   426→          "Os valores são estimativas para fins de planejamento. Os descontos reais podem variar conforme dependentes, outros benefícios e atualizações das tabelas governamentais.",
+   427→        ],
+   428→      },
+   429→    ],
+   430→    howTo: [
+   431→      "Digite o salário bruto mensal.",
+   432→      "Informe o número de dependentes (se houver).",
+   433→      "Veja os descontos de INSS e IRRF estimados.",
+   434→      "Confira o salário líquido aproximado.",
+   435→    ],
+   436→    example:
+   437→      "Exemplo: um salário bruto de R$ 4.000 com a estimativa de descontos gera um líquido aproximado que varia conforme dependentes e faixas vigentes.",
+   438→    benefits: [
+   439→      "Mostra o detalhamento de cada desconto",
+   440→      "Considera dependentes no IRRF",
+   441→      "Ajuda a planejar o orçamento",
+   442→    ],
+   443→    faq: [
+   444→      {
+   445→        q: "Os valores são exatos?",
+   446→        a: "São estimativas baseadas em tabelas de referência. Para valores exatos, consulte o holerite ou o RH da empresa.",
+   447→      },
+   448→      {
+   449→        q: "O cálculo serve para CLT e autônomos?",
+   450→        a: "Esta calculadora foca em CLT (INSS e IRRF). Autônomos têm regras diferentes de contribuição.",
+   451→      },
+   452→    ],
+   453→  },
+   454→  {
+   455→    slug: "calculadora-idade",
+   456→    title: "Calculadora de Idade",
+   457→    name: "Idade",
+   458→    category: "calculadoras",
+   459→    icon: "Cake",
+   460→    tagline: "Descubra sua idade exata em anos, meses e dias.",
+   461→    description:
+   462→      "Calculadora de idade online grátis. Descubra sua idade exata em anos, meses, semanas, dias e até horas a partir da data de nascimento.",
+   463→    keywords: [
+   464→      "calculadora de idade",
+   465→      "calcular idade",
+   466→      "idade em dias",
+   467→      "quantos dias vivi",
+   468→      "idade exata",
+   469→    ],
+   470→    intro:
+   471→      "Descubra sua idade exata em anos, meses e dias. Informe sua data de nascimento e veja também o total em semanas e dias.",
+   472→    content: [
+   473→      {
+   474→        heading: "Como a idade é calculada",
+   475→        paragraphs: [
+   476→          "A calculadora conta o tempo entre a data de nascimento e a data atual, considerando anos completos, meses restantes e dias restantes.",
+   477→          "Também é possível ver o total em dias e semanas — curioso para saber quantos dias você já viveu.",
+   478→        ],
+   479→      },
+   480→    ],
+   481→    howTo: [
+   482→      "Selecione sua data de nascimento.",
+   483→      "Opcionalmente, escolha uma data de referência diferente de hoje.",
+   484→      "Veja sua idade em anos, meses, dias, semanas e total de dias.",
+   485→    ],
+   486→    example:
+   487→      "Exemplo: quem nasceu em 01/01/2000 tem, hoje, idade exata exibida em anos, meses e dias, além do total de dias vividos.",
+   488→    benefits: [
+   489→      "Mostra idade em várias unidades",
+   490→      "Aceita data de referência personalizada",
+   491→      "Útil para documentos e curiosidades",
+   492→    ],
+   493→    faq: [
+   494→      {
+   495→        q: "Como saber quantos dias vivi?",
+   496→        a: "Informe sua data de nascimento e a calculadora mostrará o total exato de dias até hoje.",
+   497→      },
+   498→      {
+   499→        q: "Posso calcular a idade em uma data futura?",
+   500→        a: "Sim, basta definir uma data de referência diferente do dia de hoje.",
+   501→      },
+   502→    ],
+   503→  },
+   504→  {
+   505→    slug: "diferenca-entre-datas",
+   506→    title: "Diferença Entre Datas",
+   507→    name: "Diferença Entre Datas",
+   508→    category: "calculadoras",
+   509→    icon: "CalendarRange",
+   510→    tagline: "Calcule o intervalo entre duas datas com precisão.",
+   511→    description:
+   512→      "Calculadora de diferença entre datas online grátis. Descubra quantos dias, meses e anos existem entre duas datas de forma rápida e precisa.",
+   513→    keywords: [
+   514→      "diferença entre datas",
+   515→      "calcular dias entre datas",
+   516→      "intervalo entre datas",
+   517→      "dias entre datas",
+   518→      "calculadora de datas",
+   519→    ],
+   520→    intro:
+   521→      "Calcule o intervalo entre duas datas. Veja o resultado em dias, semanas, meses e anos totais.",
+   522→    content: [
+   523→      {
+   524→        heading: "Para que serve",
+   525→        paragraphs: [
+   526→          "Calcular a diferença entre datas é útil para planejar prazos, contratos, gestações, viagens e projetos. A ferramenta mostra o intervalo em várias unidades.",
+   527→          "A contagem considera os calendários real, incluindo anos bissextos, para um resultado exato.",
+   528→        ],
+   529→      },
+   530→    ],
+   531→    howTo: [
+   532→      "Informe a data inicial.",
+   533→      "Informe a data final.",
+   534→      "Veja a diferença em dias, semanas, meses e anos.",
+   535→    ],
+   536→    example:
+   537→      "Exemplo: entre 01/01/2024 e 01/06/2024 há 152 dias, ou aproximadamente 5 meses.",
+   538→    benefits: [
+   539→      "Resultado em várias unidades",
+   540→      "Considera anos bissextos",
+   541→      "Essencial para prazos e planejamento",
+   542→    ],
+   543→    faq: [
+   544→      {
+   545→        q: "A data inicial conta como um dia?",
+   546→        a: "Por padrão, a calculadora conta o intervalo completo entre as duas datas. Para incluir o dia inicial, some um ao resultado em dias.",
+   547→      },
+   548→      {
+   549→        q: "Funciona com datas no passado?",
+   550→        a: "Sim, você pode colocar a data final antes da inicial. O resultado será o mesmo intervalo em valor absoluto.",
+   551→      },
+   552→    ],
+   553→  },
+   554→  {
+   555→    slug: "calculadora-imc",
+   556→    title: "Calculadora IMC",
+   557→    name: "IMC",
+   558→    category: "calculadoras",
+   559→    icon: "Activity",
+   560→    tagline: "Calcule seu Índice de Massa Corporal em segundos.",
+   561→    description:
+   562→      "Calculadora de IMC online grátis. Descubra seu Índice de Massa Corporal informando peso e altura e veja em qual faixa você está.",
+   563→    keywords: [
+   564→      "calculadora IMC",
+   565→      "índice de massa corporal",
+   566→      "calcular IMC",
+   567→      "IMC online",
+   568→      "peso e altura",
+   569→    ],
+   570→    intro:
+   571→      "Calcule seu IMC (Índice de Massa Corporal) informando peso e altura. Veja em qual faixa você está de acordo com a OMS.",
+   572→    content: [
+   573→      {
+   574→        heading: "O que é o IMC",
+   575→        paragraphs: [
+   576→          "O IMC é um cálculo que relaciona peso e altura para avaliar se o peso está adequado. É uma referência amplamente usada, mas não mede gordura corporal diretamente.",
+   577→          "As faixas da OMS são: abaixo de 18,5 (abaixo do peso), 18,5 a 24,9 (normal), 25 a 29,9 (sobrepeso) e acima de 30 (obesidade).",
+   578→        ],
+   579→      },
+   580→      {
+   581→        heading: "Fórmula do IMC",
+   582→        paragraphs: [
+   583→          "IMC = peso (kg) ÷ altura (m)²",
+   584→          "Por exemplo, 70 kg e 1,75 m: 70 ÷ (1,75 × 1,75) = 22,9 — faixa normal.",
+   585→        ],
+   586→      },
+   587→    ],
+   588→    howTo: [
+   589→      "Digite seu peso em quilogramas.",
+   590→      "Digite sua altura em metros (ex.: 1,75).",
+   591→      "Veja o IMC e a faixa correspondente.",
+   592→    ],
+   593→    example:
+   594→      "Exemplo: uma pessoa com 70 kg e 1,75 m tem IMC de 22,9, classificado como peso normal.",
+   595→    benefits: [
+   596→      "Resultado instantâneo",
+   597→      "Classificação automática por faixa",
+   598→      "Referência prática para saúde",
+   599→    ],
+   600→    faq: [
+   601→      {
+   602→        q: "O IMC funciona para todos?",
+   603→        a: "O IMC é uma referência geral e não diferencia massa muscular de gordura. Atletas, idosos e gestantes devem avaliar com um profissional de saúde.",
+   604→      },
+   605→      {
+   606→        q: "Como calcular IMC com altura em centímetros?",
+   607→        a: "Divida a altura por 100 para converter em metros antes de usar na fórmula. A calculadora aceita o valor em metros.",
+   608→      },
+   609→    ],
+   610→    popular: true,
+   611→  },
+   612→
+   613→  // ===================== CONVERSORES =====================
+   614→  {
+   615→    slug: "conversor-temperatura",
+   616→    title: "Conversor de Temperatura",
+   617→    name: "Temperatura",
+   618→    category: "conversores",
+   619→    icon: "Thermometer",
+   620→    tagline: "Converta Celsius, Fahrenheit e Kelvin sem erro.",
+   621→    description:
+   622→      "Conversor de temperatura online grátis. Converta entre Celsius, Fahrenheit e Kelvin de forma rápida e precisa.",
+   623→    keywords: [
+   624→      "conversor de temperatura",
+   625→      "celsius para fahrenheit",
+   626→      "fahrenheit para celsius",
+   627→      "kelvin",
+   628→      "converter temperatura",
+   629→    ],
+   630→    intro:
+   631→      "Converta entre Celsius, Fahrenheit e Kelvin instantaneamente. Digite um valor e veja as demais escalas atualizarem.",
+   632→    content: [
+   633→      {
+   634→        heading: "Escalas de temperatura",
+   635→        paragraphs: [
+   636→          "Celsius (°C) é a escala mais usada no mundo. Fahrenheit (°F) é comum nos Estados Unidos. Kelvin (K) é a escala absoluta usada em ciência.",
+   637→          "O zero absoluto (0 K) equivale a −273,15 °C, a temperatura mais baixa possível.",
+   638→        ],
+   639→      },
+   640→      {
+   641→        heading: "Fórmulas de conversão",
+   642→        paragraphs: [
+   643→          "Celsius → Fahrenheit: °F = °C × 9/5 + 32",
+   644→          "Fahrenheit → Celsius: °C = (°F − 32) × 5/9",
+   645→          "Celsius → Kelvin: K = °C + 273,15",
+   646→        ],
+   647→      },
+   648→    ],
+   649→    howTo: [
+   650→      "Escolha a escala de origem.",
+   651→      "Digite o valor a ser convertido.",
+   652→      "Veja o resultado nas demais escalas.",
+   653→    ],
+   654→    example:
+   655→      "Exemplo: 25 °C equivalem a 77 °F e 298,15 K.",
+   656→    benefits: [
+   657→      "Converte entre as três escalas principais",
+   658→          "Resultado em tempo real",
+   659→      "Útil para estudos, receitas e viagens",
+   660→    ],
+   661→    faq: [
+   662→      {
+   663→        q: "Como converter Celsius para Fahrenheit de cabeça?",
+   664→        a: "Multiplique por 9, divida por 5 e some 32. Por exemplo, 20 °C → 36 × ... → 68 °F.",
+   665→      },
+   666→      {
+   667→        q: "Kelvin usa grau?",
+   668→        a: "Não. Kelvin é uma escala absoluta e não recebe o símbolo de grau. Escreve-se apenas K.",
+   669→      },
+   670→    ],
+   671→    popular: true,
+   672→  },
+   673→  {
+   674→    slug: "conversor-comprimento",
+   675→    title: "Conversor de Comprimento",
+   676→    name: "Comprimento",
+   677→    category: "conversores",
+   678→    icon: "Ruler",
+   679→    tagline: "Converta metros, pés, polegadas e milhas.",
+   680→    description:
+   681→      "Conversor de comprimento online grátis. Converta entre metros, quilômetros, pés, polegadas, milhas e muito mais.",
+   682→    keywords: [
+   683→      "conversor de comprimento",
+   684→      "metros para pés",
+   685→      "polegadas para cm",
+   686→      "milhas para km",
+   687→      "converter medidas",
+   688→    ],
+   689→    intro:
+   690→      "Converta entre unidades de comprimento do sistema métrico e imperial. Digite um valor e veja todas as equivalências.",
+   691→    content: [
+   692→      {
+   693→        heading: "Unidades de comprimento",
+   694→        paragraphs: [
+   695→          "O sistema métrico (metro, quilômetro, centímetro) é usado na maior parte do mundo. O sistema imperial (pés, polegadas, milhas) é comum em países como Estados Unidos e Reino Unido.",
+   696→          "A unidade base para conversão é o metro. Todas as outras unidades são derivadas dele.",
+   697→        ],
+   698→      },
+   699→    ],
+   700→    howTo: [
+   701→      "Escolha a unidade de origem.",
+   702→      "Digite o valor.",
+   703→      "Veja o resultado em todas as unidades listadas.",
+   704→    ],
+   705→    example:
+   706→      "Exemplo: 1 metro equivale a 3,281 pés, 39,37 polegadas e 0,001 quilômetro.",
+   707→    benefits: [
+   708→      "Métrico e imperial na mesma tela",
+   709→      "Resultado instantâneo em todas as unidades",
+   710→      "Útil para viagens, obras e estudos",
+   711→    ],
+   712→    faq: [
+   713→      {
+   714→        q: "Quantos centímetros tem uma polegada?",
+   715→        a: "Uma polegada equivale a 2,54 centímetros exatamente.",
+   716→      },
+   717→      {
+   718→        q: "Quantos metros tem um pé?",
+   719→        a: "Um pé (foot) equivale a aproximadamente 0,3048 metro.",
+   720→      },
+   721→    ],
+   722→  },
+   723→  {
+   724→    slug: "conversor-peso",
+   725→    title: "Conversor de Peso",
+   726→    name: "Peso",
+   727→    category: "conversores",
+   728→    icon: "Scale",
+   729→    tagline: "Converta quilogramas, libras, onças e toneladas.",
+   730→    description:
+   731→      "Conversor de peso online grátis. Converta entre quilogramas, gramas, libras, onças e toneladas com precisão.",
+   732→    keywords: [
+   733→      "conversor de peso",
+   734→      "kg para libras",
+   735→      "libras para kg",
+   736→      "onças para gramas",
+   737→      "converter massa",
+   738→    ],
+   739→    intro:
+   740→      "Converta entre unidades de peso e massa. Digite um valor e veja todas as equivalências atualizarem na hora.",
+   741→    content: [
+   742→      {
+   743→        heading: "Unidades de peso",
+   744→        paragraphs: [
+   745→          "O sistema métrico usa o grama como base, com quilograma (kg) como unidade comum. O sistema imperial usa libras (lb) e onças (oz).",
+   746→          "Para conversões, a referência é: 1 kg = 1000 g = 2,20462 lb = 35,274 oz.",
+   747→        ],
+   748→      },
+   749→    ],
+   750→    howTo: [
+   751→      "Escolha a unidade de origem.",
+   752→      "Digite o valor a converter.",
+   753→      "Veja o resultado em todas as unidades.",
+   754→    ],
+   755→    example:
+   756→      "Exemplo: 1 quilograma equivale a 2,2046 libras e 35,274 onças.",
+   757→    benefits: [
+   758→      "Métrico e imperial juntos",
+   759→      "Resultado em tempo real",
+   760→      "Útil para receitas, academia e comércio",
+   761→    ],
+   762→    faq: [
+   763→      {
+   764→        q: "Quantos quilos tem uma libra?",
+   765→        a: "Uma libra equivale a aproximadamente 0,4536 quilograma.",
+   766→      },
+   767→      {
+   768→        q: "Onça de peso é igual a onça fluida?",
+   769→        a: "Não. Onça fluida mede volume, enquanto onça (oz) mede peso. São unidades diferentes.",
+   770→      },
+   771→    ],
+   772→  },
+   773→  {
+   774→    slug: "conversor-volume",
+   775→    title: "Conversor de Volume",
+   776→    name: "Volume",
+   777→    category: "conversores",
+   778→    icon: "FlaskConical",
+   779→    tagline: "Converta litros, mililitros, galões e xícaras.",
+   780→    description:
+   781→      "Conversor de volume online grátis. Converta entre litros, mililitros, galões, xícaras e outras unidades de volume.",
+   782→    keywords: [
+   783→      "conversor de volume",
+   784→      "litros para mililitros",
+   785→      "galões para litros",
+   786→      "xícaras para ml",
+   787→      "converter volume",
+   788→    ],
+   789→    intro:
+   790→      "Converta entre unidades de volume: litros, mililitros, galões, xícaras e mais. Resultado instantâneo.",
+   791→    content: [
+   792→      {
+   793→        heading: "Unidades de volume",
+   794→        paragraphs: [
+   795→          "O litro é a unidade de volume mais comum no dia a dia. Na cozinha, usamos xícaras e colheres. Em países de língua inglesa, o galão é frequente.",
+   796→          "Referência: 1 litro = 1000 ml = 4 xícaras (aprox.) = 0,264 galão americano.",
+   797→        ],
+   798→      },
+   799→    ],
+   800→    howTo: [
+   801→      "Selecione a unidade de origem.",
+   802→      "Digite o valor.",
+   803→      "Veja as equivalências em todas as unidades.",
+   804→    ],
+   805→    example:
+   806→      "Exemplo: 1 litro equivale a 1000 mililitros e a cerca de 4,227 xícaras.",
+   807→    benefits: [
+   808→      "Inclui unidades culinárias",
+   809→      "Resultado em tempo real",
+   810→      "Ótimo para receitas e receitas internacionais",
+   811→    ],
+   812→    faq: [
+   813→      {
+   814→        q: "Qual a diferença entre galão americano e imperial?",
+   815→        a: "O galão americano equivale a 3,785 litros, enquanto o galão imperial (Reino Unido) equivale a 4,546 litros.",
+   816→      },
+   817→      {
+   818→        q: "Quantos ml tem uma xícara?",
+   819→        a: "Uma xícara padrão brasileira tem 240 ml. Nos EUA, a xícara tem cerca de 236,6 ml.",
+   820→      },
+   821→    ],
+   822→  },
+   823→  {
+   824→    slug: "conversor-area",
+   825→    title: "Conversor de Área",
+   826→    name: "Área",
+   827→    category: "conversores",
+   828→    icon: "Square",
+   829→    tagline: "Converta m², hectares, acres e pés quadrados.",
+   830→    description:
+   831→      "Conversor de área online grátis. Converta entre metros quadrados, hectares, acres, pés quadrados e outras unidades de área.",
+   832→    keywords: [
+   833→      "conversor de área",
+   834→      "m2 para hectares",
+   835→      "acres para m2",
+   836→      "pés quadrados",
+   837→      "converter área",
+   838→    ],
+   839→    intro:
+   840→      "Converta entre unidades de área: metros quadrados, hectares, acres, pés quadrados e mais.",
+   841→    content: [
+   842→      {
+   843→        heading: "Unidades de área",
+   844→        paragraphs: [
+   845→          "O metro quadrado (m²) é a unidade mais comum no Brasil. Para grandes extensões de terra, usa-se o hectare (ha) e, em países de língua inglesa, o acre.",
+   846→          "Referência: 1 hectare = 10.000 m² = 2,471 acres.",
+   847→        ],
+   848→      },
+   849→    ],
+   850→    howTo: [
+   851→      "Selecione a unidade de origem.",
+   852→      "Digite o valor.",
+   853→      "Veja o resultado em todas as unidades.",
+   854→    ],
+   855→    example:
+   856→      "Exemplo: 1 hectare equivale a 10.000 m² e a aproximadamente 2,471 acres.",
+   857→    benefits: [
+   858→      "Métrico e imperial",
+   859→      "Resultado em tempo real",
+   860→      "Essencial para imóveis e agricultura",
+   861→    ],
+   862→    faq: [
+   863→      {
+   864→        q: "Quantos m² tem um acre?",
+   865→        a: "Um acre equivale a aproximadamente 4.046,86 metros quadrados.",
+   866→      },
+   867→      {
+   868→        q: "Hectare e alqueire são iguais?",
+   869→        a: "Não. O hectare é padrão internacional (10.000 m²). O alqueire varia conforme a região do Brasil.",
+   870→      },
+   871→    ],
+   872→  },
+   873→  {
+   874→    slug: "conversor-velocidade",
+   875→    title: "Conversor de Velocidade",
+   876→    name: "Velocidade",
+   877→    category: "conversores",
+   878→    icon: "Gauge",
+   879→    tagline: "Converta km/h, mph, nós e m/s.",
+   880→    description:
+   881→      "Conversor de velocidade online grátis. Converta entre km/h, mph, metros por segundo e nós com precisão.",
+   882→    keywords: [
+   883→      "conversor de velocidade",
+   884→      "km/h para mph",
+   885→      "mph para km/h",
+   886→      "nós",
+   887→      "m/s para km/h",
+   888→    ],
+   889→    intro:
+   890→      "Converta entre unidades de velocidade: km/h, mph, m/s e nós. Resultado instantâneo em todas as escalas.",
+   891→    content: [
+   892→      {
+   893→        heading: "Unidades de velocidade",
+   894→        paragraphs: [
+   895→          "No Brasil, usamos quilômetros por hora (km/h). Nos Estados Unidos e Reino Unido, milhas por hora (mph). Em navegação e aviação, o nó (knot).",
+   896→          "Referência: 1 km/h ≈ 0,621 mph ≈ 0,278 m/s ≈ 0,540 nós.",
+   897→        ],
+   898→      },
+   899→    ],
+   900→    howTo: [
+   901→      "Escolha a unidade de origem.",
+   902→      "Digite o valor.",
+   903→      "Veja as equivalências em todas as unidades.",
+   904→    ],
+   905→    example:
+   906→      "Exemplo: 100 km/h equivalem a 62,14 mph, 27,78 m/s e 53,99 nós.",
+   907→    benefits: [
+   908→      "Converte km/h, mph, m/s e nós",
+   909→      "Resultado em tempo real",
+   910→      "Útil para viagens e estudos de física",
+   911→    ],
+   912→    faq: [
+   913→      {
+   914→        q: "Quantos km/h tem 1 mph?",
+   915→        a: "1 milha por hora equivale a aproximadamente 1,609 km/h.",
+   916→      },
+   917→      {
+   918→        q: "O que é um nó?",
+   919→        a: "O nó é uma unidade de velocidade usada em navegação, equivalente a uma milha náutica por hora (1,852 km/h).",
+   920→      },
+   921→    ],
+   922→  },
+   923→  {
+   924→    slug: "conversor-moedas",
+   925→    title: "Conversor de Moedas",
+   926→    name: "Moedas",
+   927→    category: "conversores",
+   928→    icon: "DollarSign",
+   929→    tagline: "Converta valores entre as principais moedas.",
+   930→    description:
+   931→      "Conversor de moedas online grátis. Converta entre dólar, euro, real e as principais moedas do mundo usando taxas de referência.",
+   932→    keywords: [
+   933→      "conversor de moedas",
+   934→      "dólar para real",
+   935→      "euro para real",
+   936→      "cotação de moedas",
+   937→      "converter moeda online",
+   938→    ],
+   939→    intro:
+   940→      "Converta entre as principais moedas do mundo. Digite o valor e veja a conversão usando taxas de referência.",
+   941→    content: [
+   942→      {
+   943→        heading: "Sobre as taxas",
+   944→        paragraphs: [
+   945→          "A calculadora usa taxas de referência para conversão entre moedas. As taxas reais variam ao longo do dia e conforme o canal (bancos, casas de câmbio, cartões).",
+   946→          "Para transações efetivas, consulte sempre a cotação praticada no momento da operação.",
+   947→        ],
+   948→      },
+   949→    ],
+   950→    howTo: [
+   951→      "Selecione a moeda de origem e a de destino.",
+   952→      "Digite o valor a converter.",
+   953→      "Veja o resultado com base na taxa de referência.",
+   954→    ],
+   955→    example:
+   956→      "Exemplo: um valor em dólares convertido para reais usando a taxa de referência mostra o equivalente aproximado em BRL.",
+   957→    benefits: [
+   958→      "Várias moedas suportadas",
+   959→      "Resultado instantâneo",
+   960→      "Prático para viagens e compras internacionais",
+   961→    ],
+   962→    faq: [
+   963→      {
+   964→        q: "As taxas são atualizadas em tempo real?",
+   965→        a: "As taxas são de referência e podem não refletir a cotação comercial do instante. Para valores oficiais, consulte o Banco Central ou sua instituição.",
+   966→      },
+   967→      {
+   968→        q: "Posso confiar no valor para comprar?",
+   969→        a: "Use apenas como estimativa. Bancos e cartões aplicam spread e IOF, alterando o valor final.",
+   970→      },
+   971→    ],
+   972→    popular: true,
+   973→  },
+   974→  {
+   975→    slug: "conversor-tempo",
+   976→    title: "Conversor de Tempo",
+   977→    name: "Tempo",
+   978→    category: "conversores",
+   979→    icon: "Clock",
+   980→    tagline: "Converta segundos, minutos, horas e dias.",
+   981→    description:
+   982→      "Conversor de tempo online grátis. Converta entre segundos, minutos, horas, dias, semanas e mais.",
+   983→    keywords: [
+   984→      "conversor de tempo",
+   985→      "segundos para minutos",
+   986→      "horas para dias",
+   987→      "converter tempo",
+   988→      "minutos para horas",
+   989→    ],
+   990→    intro:
+   991→      "Converta entre unidades de tempo: segundos, minutos, horas, dias, semanas e mais. Resultado instantâneo.",
+   992→    content: [
+   993→      {
+   994→        heading: "Unidades de tempo",
+   995→        paragraphs: [
+   996→          "O tempo é medido em segundos, minutos, horas, dias, semanas, meses e anos. A unidade base no SI é o segundo.",
+   997→          "Referência: 1 minuto = 60 segundos; 1 hora = 60 minutos; 1 dia = 24 horas.",
+   998→        ],
+   999→      },
+  1000→    ],
+  1001→    howTo: [
+  1002→      "Selecione a unidade de origem.",
+  1003→      "Digite o valor.",
+  1004→      "Veja as equivalências em todas as unidades.",
+  1005→    ],
+  1006→    example:
+  1007→      "Exemplo: 90 minutos equivalem a 1,5 hora, 5400 segundos e 0,0625 dia.",
+  1008→    benefits: [
+  1009→      "Converte entre todas as unidades comuns",
+  1010→      "Resultado em tempo real",
+  1011→      "Útil para estudos e planejamento",
+  1012→    ],
+  1013→    faq: [
+  1014→      {
+  1015→        q: "Quantos segundos tem um dia?",
+  1016→        a: "Um dia tem 86.400 segundos (24 × 60 × 60).",
+  1017→      },
+  1018→      {
+  1019→        q: "Como converter horas em dias?",
+  1020→        a: "Divida o número de horas por 24. Por exemplo, 48 horas = 2 dias.",
+  1021→      },
+  1022→    ],
+  1023→  },
+  1024→
+  1025→  // ===================== GERADORES =====================
+  1026→  {
+  1027→    slug: "gerador-senhas",
+  1028→    title: "Gerador de Senhas",
+  1029→    name: "Senhas",
+  1030→    category: "geradores",
+  1031→    icon: "KeyRound",
+  1032→    tagline: "Crie senhas fortes e aleatórias com segurança.",
+  1033→    description:
+  1034→      "Gerador de senhas online grátis. Crie senhas fortes e aleatórias com tamanho personalizado, números, símbolos e letras.",
+  1035→    keywords: [
+  1036→      "gerador de senhas",
+  1037→      "senha forte",
+  1038→      "criar senha",
+  1039→      "senha aleatória",
+  1040→      "gerador de senha online",
+  1041→    ],
+  1042→    intro:
+  1043→      "Crie senhas fortes e aleatórias instantaneamente. Escolha o tamanho e os tipos de caracteres para máxima segurança.",
+  1044→    content: [
+  1045→      {
+  1046→        heading: "O que torna uma senha forte",
+  1047→        paragraphs: [
+  1048→          "Uma senha forte é longa e combina letras maiúsculas, minúsculas, números e símbolos. Quanto maior e mais variada, mais difícil de ser quebrada.",
+  1049→          "Evite senhas com datas de aniversário, nomes ou sequências como 123456. Use uma senha diferente para cada serviço.",
+  1050→        ],
+  1051→      },
+  1052→      {
+  1053→        heading: "Segurança do gerador",
+  1054→        paragraphs: [
+  1055→          "As senhas são geradas no seu próprio navegador usando a API criptográfica Web Crypto, que oferece alta aleatoriedade. Nenhuma senha é enviada para servidores.",
+  1056→        ],
+  1057→      },
+  1058→    ],
+  1059→    howTo: [
+  1060→      "Defina o tamanho da senha (recomendado: 16 ou mais).",
+  1061→      "Marque os tipos de caracteres desejados.",
+  1062→      "Clique em gerar para criar uma nova senha.",
+  1063→      "Copie com um clique para usar onde precisar.",
+  1064→    ],
+  1065→    example:
+  1066→      "Exemplo: uma senha de 16 caracteres com letras, números e símbolos tem complexidade suficiente para a maioria dos serviços.",
+  1067→    benefits: [
+  1068→      "Geração local e privada",
+  1069→      "Tamanho e caracteres personalizáveis",
+  1070→      "Cópia com um clique",
+  1071→    ],
+  1072→    faq: [
+  1073→      {
+  1074→        q: "As senhas são salvas em algum lugar?",
+  1075→        a: "Não. Tudo acontece no seu navegador. Nenhuma senha é enviada ou armazenada.",
+  1076→      },
+  1077→      {
+  1078→        q: "Qual o tamanho ideal de senha?",
+  1079→        a: "Recomenda-se no mínimo 12 caracteres. Para serviços sensíveis, use 16 ou mais.",
+  1080→      },
+  1081→    ],
+  1082→    popular: true,
+  1083→    howToSteps: [
+  1084→      "Defina o tamanho e os tipos de caracteres.",
+  1085→      "Clique em gerar para criar a senha.",
+  1086→      "Copie a senha gerada para usar com segurança.",
+  1087→    ],
+  1088→  },
+  1089→  {
+  1090→    slug: "gerador-qrcode",
+  1091→    title: "Gerador QR Code",
+  1092→    name: "QR Code",
+  1093→    category: "geradores",
+  1094→    icon: "QrCode",
+  1095→    tagline: "Crie QR Codes para links, textos e contatos.",
+  1096→    description:
+  1097→      "Gerador de QR Code online grátis. Crie QR Codes personalizados para links, textos e informações com download em PNG.",
+  1098→    keywords: [
+  1099→      "gerador qr code",
+  1100→      "criar qr code",
+  1101→      "qr code online grátis",
+  1102→      "qr code para link",
+  1103→      "gerar qrcode",
+  1104→    ],
+  1105→    intro:
+  1106→      "Crie QR Codes gratuitos para links, textos e qualquer informação. Gere e baixe em PNG para usar onde quiser.",
+  1107→    content: [
+  1108→      {
+  1109→        heading: "O que é um QR Code",
+  1110→        paragraphs: [
+  1111→          "O QR Code é um código bidimensional que pode ser lido pela câmera de qualquer celular. É usado para abrir links, pagar, compartilhar Wi-Fi e muito mais.",
+  1112→          "Quanto mais curto o conteúdo, mais simples e legível o QR Code. Para links, considere usar encurtadores.",
+  1113→        ],
+  1114→      },
+  1115→    ],
+  1116→    howTo: [
+  1117→      "Digite ou cole o conteúdo (link, texto, etc.).",
+  1118→      "O QR Code é gerado automaticamente.",
+  1119→      "Baixe a imagem em PNG para usar.",
+  1120→    ],
+  1121→    example:
+  1122→      "Exemplo: cole o link do seu site e baixe o QR Code para imprimir em cartões ou divulgação.",
+  1123→    benefits: [
+  1124→      "Geração instantânea",
+  1125→      "Download em PNG",
+  1126→      "Funciona para links, textos e contatos",
+  1127→    ],
+  1128→    faq: [
+  1129→      {
+  1130→        q: "O QR Code expira?",
+  1131→        a: "Não. O QR Code gerado é estático e funciona para sempre, desde que o conteúdo continue válido.",
+  1132→      },
+  1133→      {
+  1134→        q: "Posso usar comercialmente?",
+  1135→        a: "Sim. Os QR Codes gerados são livres para uso pessoal e comercial.",
+  1136→      },
+  1137→    ],
+  1138→    popular: true,
+  1139→  },
+  1140→  {
+  1141→    slug: "gerador-lorem-ipsum",
+  1142→    title: "Gerador Lorem Ipsum",
+  1143→    name: "Lorem Ipsum",
+  1144→    category: "geradores",
+  1145→    icon: "AlignLeft",
+  1146→    tagline: "Gere texto de preenchimento para seus projetos.",
+  1147→    description:
+  1148→      "Gerador Lorem Ipsum online grátis. Crie parágrafos, frases e palavras de texto de preenchimento para layouts e protótipos.",
+  1149→    keywords: [
+  1150→      "gerador lorem ipsum",
+  1151→      "lorem ipsum online",
+  1152→      "texto de preenchimento",
+  1153→      "dummy text",
+  1154→      "gerar parágrafos",
+  1155→    ],
+  1156→    intro:
+  1157→      "Gere texto Lorem Ipsum para preencher layouts e protótipos. Escolha quantos parágrafos, frases ou palavras deseja.",
+  1158→    content: [
+  1159→      {
+  1160→        heading: "O que é Lorem Ipsum",
+  1161→        paragraphs: [
+  1162→          "Lorem Ipsum é um texto fictício usado há séculos na tipografia e no design para preencher espaços e testar layouts sem distrair com o conteúdo.",
+  1163→          "É útil para designers e desenvolvedores que precisam visualizar como um texto se comporta em uma interface antes do conteúdo real.",
+  1164→        ],
+  1165→      },
+  1166→    ],
+  1167→    howTo: [
+  1168→      "Escolha a unidade (parágrafos, frases ou palavras).",
+  1169→      "Defina a quantidade desejada.",
+  1170→      "Copie o texto gerado com um clique.",
+  1171→    ],
+  1172→    example:
+  1173→      "Exemplo: gere 3 parágrafos para preencher a área de conteúdo de um mockup de blog.",
+  1174→    benefits: [
+  1175→      "Parágrafos, frases ou palavras",
+  1176→      "Cópia com um clique",
+  1177→      "Ideal para designers e desenvolvedores",
+  1178→    ],
+  1179→    faq: [
+  1180→      {
+  1181→        q: "Lorem Ipsum significa algo?",
+  1182→        a: "Não tem significado real. É derivado de um texto de Cícero, mas alterado para não ser legível como texto comum.",
+  1183→      },
+  1184→      {
+  1185→        q: "Posso usar em projetos comerciais?",
+  1186→        a: "Sim, é livre para qualquer uso, inclusive comercial.",
+  1187→      },
+  1188→    ],
+  1189→  },
+  1190→  {
+  1191→    slug: "gerador-nomes",
+  1192→    title: "Gerador de Nomes",
+  1193→    name: "Nomes",
+  1194→    category: "geradores",
+  1195→    icon: "User",
+  1196→    tagline: "Gere nomes aleatórios para personagens e projetos.",
+  1197→    description:
+  1198→      "Gerador de nomes online grátis. Crie nomes aleatórios para personagens, projetos, testes e cadastros com um clique.",
+  1199→    keywords: [
+  1200→      "gerador de nomes",
+  1201→      "nome aleatório",
+  1202→      "gerar nomes",
+  1203→      "nomes fictícios",
+  1204→      "gerador de nomes online",
+  1205→    ],
+  1206→    intro:
+  1207→      "Gere nomes aleatórios para personagens, testes e projetos. Escolha a quantidade e copie os nomes gerados.",
+  1208→    content: [
+  1209→      {
+  1210→        heading: "Para que serve um gerador de nomes",
+  1211→        paragraphs: [
+  1212→          "Um gerador de nomes é útil para criar personagens, preencher bancos de dados de teste, escolher nomes para projetos e muito mais.",
+  1213→          "Os nomes gerados são fictícios e combinam nomes e sobrenomes comuns para criar combinações variadas.",
+  1214→        ],
+  1215→      },
+  1216→    ],
+  1217→    howTo: [
+  1218→      "Defina quantos nomes deseja gerar.",
+  1219→      "Clique em gerar.",
+  1220→      "Copie os nomes para usar onde precisar.",
+  1221→    ],
+  1222→    example:
+  1223→      "Exemplo: gere 10 nomes para popular uma lista de usuários de teste em um sistema.",
+  1224→    benefits: [
+  1225→      "Gera vários nomes de uma vez",
+  1226→      "Nomes fictícios e variados",
+  1227→      "Cópia rápida",
+  1228→    ],
+  1229→    faq: [
+  1230→      {
+  1231→        q: "Os nomes são reais?",
+  1232→        a: "Os nomes são combinações aleatórias de nomes e sobrenomes comuns. São fictícios e qualquer semelhança com pessoas reais é coincidência.",
+  1233→      },
+  1234→      {
+  1235→        q: "Posso usar para cadastro real?",
+  1236→        a: "Use apenas para testes e projetos fictícios. Para cadastros reais, use seus dados verdadeiros.",
+  1237→      },
+  1238→    ],
+  1239→  },
+  1240→  {
+  1241→    slug: "gerador-hash",
+  1242→    title: "Gerador Hash",
+  1243→    name: "Hash",
+  1244→    category: "geradores",
+  1245→    icon: "Hash",
+  1246→    tagline: "Gere hashes MD5, SHA-1, SHA-256 e mais.",
+  1247→    description:
+  1248→      "Gerador de hash online grátis. Calcule hashes MD5, SHA-1, SHA-256 e SHA-512 de qualquer texto diretamente no navegador.",
+  1249→    keywords: [
+  1250→      "gerador de hash",
+  1251→      "calcular hash",
+  1252→      "sha256 online",
+  1253→      "md5 online",
+  1254→      "gerar hash",
+  1255→    ],
+  1256→    intro:
+  1257→      "Calcule hashes de qualquer texto usando MD5, SHA-1, SHA-256 e SHA-512. Tudo processado no seu navegador.",
+  1258→    content: [
+  1259→      {
+  1260→        heading: "O que é um hash",
+  1261→        paragraphs: [
+  1262→          "Um hash é uma assinatura digital de tamanho fixo gerada a partir de um conteúdo. A mesma entrada sempre gera o mesmo hash, e é impraticável reverter.",
+  1263→          "Hashes são usados para verificar integridade de arquivos, armazenar senhas e assinar dados. MD5 e SHA-1 são considerados fracos para segurança; prefira SHA-256.",
+  1264→        ],
+  1265→      },
+  1266→    ],
+  1267→    howTo: [
+  1268→      "Digite ou cole o texto.",
+  1269→      "Veja os hashes gerados automaticamente em vários algoritmos.",
+  1270→      "Copie o hash desejado com um clique.",
+  1271→    ],
+  1272→    example:
+  1273→      "Exemplo: o texto \"toolium\" gera um hash SHA-256 único que pode ser usado para verificar integridade.",
+  1274→    benefits: [
+  1275→      "Vários algoritmos de uma vez",
+  1276→      "Cálculo local e privado",
+  1277→      "Cópia rápida de cada hash",
+  1278→    ],
+  1279→    faq: [
+  1280→      {
+  1281→        q: "É possível reverter um hash?",
+  1282→        a: "Não diretamente. Hashes são funções de mão única. O que se faz é comparar hashes, e não decifrá-los.",
+  1283→      },
+  1284→      {
+  1285→        q: "Qual algoritmo usar?",
+  1286→        a: "Para segurança, use SHA-256 ou superior. MD5 e SHA-1 não são recomendados para fins de segurança.",
+  1287→      },
+  1288→    ],
+  1289→  },
+  1290→  {
+  1291→    slug: "gerador-cores",
+  1292→    title: "Gerador de Cores",
+  1293→    name: "Cores",
+  1294→    category: "geradores",
+  1295→    icon: "Palette",
+  1296→    tagline: "Gere paletas e códigos de cor para seus projetos.",
+  1297→    description:
+  1298→      "Gerador de cores online grátis. Crie cores aleatórias, veja códigos HEX, RGB e HSL e gere paletas para seus projetos.",
+  1299→    keywords: [
+  1300→      "gerador de cores",
+  1301→      "paleta de cores",
+  1302→      "hex para rgb",
+  1303→      "cor aleatória",
+  1304→      "gerar paleta online",
+  1305→    ],
+  1306→    intro:
+  1307→      "Gere cores aleatórias e veja os códigos HEX, RGB e HSL. Crie paletas harmoniosas para seus projetos de design.",
+  1308→    content: [
+  1309→      {
+  1310→        heading: "Sistemas de cor",
+  1311→        paragraphs: [
+  1312→          "HEX é a representação hexadecimal usada em web (#RRGGBB). RGB descreve a cor pela intensidade de vermelho, verde e azul. HSL descreve matiz, saturação e luminosidade.",
+  1313→          "Para paletas harmoniosas, combine cores análogas (próximas no círculo cromático) ou complementares (opostas).",
+  1314→        ],
+  1315→      },
+  1316→    ],
+  1317→    howTo: [
+  1318→      "Clique em gerar para criar uma cor aleatória.",
+  1319→      "Veja os códigos HEX, RGB e HSL atualizados.",
+  1320→      "Copie o código da cor com um clique.",
+  1321→    ],
+  1322→    example:
+  1323→      "Exemplo: gere uma cor e copie o código HEX para usar no CSS do seu site.",
+  1324→    benefits: [
+  1325→      "Códigos em HEX, RGB e HSL",
+  1326→      "Geração aleatória com um clique",
+  1327→      "Útil para designers e desenvolvedores",
+  1328→    ],
+  1329→    faq: [
+  1330→      {
+  1331→        q: "Como converter HEX para RGB?",
+  1332→        a: "Cada par de caracteres hexadecimais representa um canal: #FF8800 equivale a RGB(255, 136, 0). A ferramenta mostra automaticamente.",
+  1333→      },
+  1334→      {
+  1335→        q: "Como criar uma paleta?",
+  1336→        a: "Gere uma cor base e use variações de saturação e luminosidade (HSL) para criar tons complementares.",
+  1337→      },
+  1338→    ],
+  1339→  },
+  1340→
+  1341→  // ===================== IMAGENS =====================
+  1342→  {
+  1343→    slug: "compressor-imagem",
+  1344→    title: "Compressor de Imagem",
+  1345→    name: "Comprimir Imagem",
+  1346→    category: "imagens",
+  1347→    icon: "FileImage",
+  1348→    tagline: "Reduza o tamanho de imagens sem perder qualidade.",
+  1349→    description:
+  1350→      "Compressor de imagem online grátis. Reduza o tamanho de JPG e PNG no navegador, com privacidade total e qualidade ajustável.",
+  1351→    keywords: [
+  1352→      "compressor de imagem",
+  1353→      "reduzir tamanho de imagem",
+  1354→      "comprimir imagem online",
+  1355→      "otimizar imagem",
+  1356→      "compactar foto",
+  1357→    ],
+  1358→    intro:
+  1359→      "Comprima imagens JPG e PNG direto no navegador, sem enviar para servidores. Ajuste a qualidade e baixe o arquivo menor.",
+  1360→    content: [
+  1361→      {
+  1362→        heading: "Por que comprimir imagens",
+  1363→        paragraphs: [
+  1364→          "Imagens grandes deixam sites lentos e ocupam espaço. Comprimir reduz o tamanho do arquivo mantendo a aparência quase igual, melhorando o desempenho.",
+  1365→          "Esta ferramenta processa tudo no seu navegador, então suas imagens nunca saem do seu dispositivo — total privacidade.",
+  1366→        ],
+  1367→      },
+  1368→    ],
+  1369→    howTo: [
+  1370→      "Selecione uma imagem do seu computador ou celular.",
+  1371→      "Ajuste o nível de qualidade desejado.",
+  1372→      "Baixe a imagem comprimida.",
+  1373→    ],
+  1374→    example:
+  1375→      "Exemplo: uma foto de 4 MB pode ser reduzida para menos de 1 MB com perda visual mínima.",
+  1376→    benefits: [
+  1377→      "Processamento local e privado",
+  1378→      "Qualidade ajustável",
+  1379→      "Redução significativa de tamanho",
+  1380→    ],
+  1381→    faq: [
+  1382→      {
+  1383→        q: "As imagens são enviadas para um servidor?",
+  1384→        a: "Não. Todo o processamento acontece no seu navegador. Suas imagens não saem do seu dispositivo.",
+  1385→      },
+  1386→      {
+  1387→        q: "Qual formato funciona melhor?",
+  1388→        a: "JPG geralmente comprime mais para fotos. PNG é melhor para imagens com áreas de cor sólida, como logotipos.",
+  1389→      },
+  1390→    ],
+  1391→    popular: true,
+  1392→  },
+  1393→  {
+  1394→    slug: "conversor-jpg-png",
+  1395→    title: "Conversor JPG para PNG",
+  1396→    name: "JPG → PNG",
+  1397→    category: "imagens",
+  1398→    icon: "FileImage",
+  1399→    tagline: "Converta JPG para PNG no navegador, com privacidade.",
+  1400→    description:
+  1401→      "Conversor JPG para PNG online grátis. Converta imagens JPG para PNG com transparência, direto no navegador.",
+  1402→    keywords: [
+  1403→      "conversor jpg para png",
+  1404→      "jpg para png",
+  1405→      "converter imagem",
+  1406→      "png com transparência",
+  1407→      "converter jpg",
+  1408→    ],
+  1409→    intro:
+  1410→      "Converta imagens JPG para PNG no seu navegador. Rápido, gratuito e sem upload para servidores.",
+  1411→    content: [
+  1412→      {
+  1413→        heading: "Diferença entre JPG e PNG",
+  1414→        paragraphs: [
+  1415→          "JPG é ideal para fotos por sua compressão, mas não suporta transparência. PNG suporta transparência e preserva melhor áreas de cor sólida, sendo melhor para logotipos e gráficos.",
+  1416→          "Converter para PNG é útil quando você precisa de transparência ou de uma imagem sem perdas para editar.",
+  1417→        ],
+  1418→      },
+  1419→    ],
+  1420→    howTo: [
+  1421→      "Selecione um arquivo JPG.",
+  1422→      "A conversão para PNG acontece automaticamente.",
+  1423→      "Baixe a imagem PNG gerada.",
+  1424→    ],
+  1425→    example:
+  1426→      "Exemplo: converta uma foto JPG em PNG para editar com camadas em um editor de imagens.",
+  1427→    benefits: [
+  1428→      "Conversão local e privada",
+  1429→      "Sem limite de uploads para servidores",
+  1430→      "Resultado instantâneo",
+  1431→    ],
+  1432→    faq: [
+  1433→      {
+  1434→        q: "O PNG fica maior que o JPG?",
+  1435→        a: "Sim, geralmente. PNG não usa compressão com perdas, então o arquivo tende a ser maior, principalmente para fotos.",
+  1436→      },
+  1437→      {
+  1438→        q: "A conversão adiciona transparência?",
+  1439→        a: "Não automaticamente. A transparência precisa ser aplicada em um editor. A conversão apenas muda o formato.",
+  1440→      },
+  1441→    ],
+  1442→  },
+  1443→  {
+  1444→    slug: "conversor-png-webp",
+  1445→    title: "Conversor PNG para WEBP",
+  1446→    name: "PNG → WEBP",
+  1447→    category: "imagens",
+  1448→    icon: "FileImage",
+  1449→    tagline: "Converta PNG para WEBP e reduza o tamanho.",
+  1450→    description:
+  1451→      "Conversor PNG para WEBP online grátis. Converta imagens PNG para o formato WEBP, mais leve e moderno, no navegador.",
+  1452→    keywords: [
+  1453→      "conversor png para webp",
+  1454→      "png para webp",
+  1455→      "converter webp",
+  1456→      "formato webp",
+  1457→      "otimizar imagem web",
+  1458→    ],
+  1459→    intro:
+  1460→      "Converta imagens PNG para WEBP, um formato moderno que oferece menor tamanho com boa qualidade. Tudo no navegador.",
+  1461→    content: [
+  1462→      {
+  1463→        heading: "Por que usar WEBP",
+  1464→        paragraphs: [
+  1465→          "WEBP é um formato do Google que oferece compressão superior a JPG e PNG, suportando transparência. Sites que usam WEBP carregam mais rápido.",
+  1466→          "Praticamente todos os navegadores modernos suportam WEBP, tornando-o uma excelente escolha para a web.",
+  1467→        ],
+  1468→      },
+  1469→    ],
+  1470→    howTo: [
+  1471→      "Selecione um arquivo PNG.",
+  1472→      "A conversão para WEBP acontece automaticamente.",
+  1473→      "Baixe a imagem WEBP gerada.",
+  1474→    ],
+  1475→    example:
+  1476→      "Exemplo: converta um logotipo PNG de 200 KB para WEBP e obtenha um arquivo de cerca de 60 KB.",
+  1477→    benefits: [
+  1478→      "Menor tamanho com qualidade",
+  1479→      "Suporta transparência",
+  1480→      "Processamento local e privado",
+  1481→    ],
+  1482→    faq: [
+  1483→      {
+  1484→        q: "Todos os navegadores suportam WEBP?",
+  1485→        a: "Todos os navegadores modernos (Chrome, Firefox, Safari, Edge) suportam WEBP. Navegadores muito antigos não.",
+  1486→      },
+  1487→      {
+  1488→        q: "WEBP suporta transparência?",
+  1489→        a: "Sim, WEBP suporta transparência (alpha), assim como PNG.",
+  1490→      },
+  1491→    ],
+  1492→  },
+  1493→  {
+  1494→    slug: "redimensionador-imagem",
+  1495→    title: "Redimensionador de Imagem",
+  1496→    name: "Redimensionar",
+  1497→    category: "imagens",
+  1498→    icon: "Scaling",
+  1499→    tagline: "Mude o tamanho de imagens sem perder qualidade.",
+  1500→    description:
+  1501→      "Redimensionador de imagem online grátis. Altere as dimensões de imagens por pixels ou porcentagem, direto no navegador.",
+  1502→    keywords: [
+  1503→      "redimensionar imagem",
+  1504→      "mudar tamanho de imagem",
+  1505→      "redimensionar foto online",
+  1506→      "alterar dimensões imagem",
+  1507→      "comprimir tamanho imagem",
+  1508→    ],
+  1509→    intro:
+  1510→      "Redimensione imagens por pixels ou porcentagem, mantendo ou não a proporção. Tudo processado no seu navegador.",
+  1511→    content: [
+  1512→      {
+  1513→        heading: "Quando redimensionar",
+  1514→        paragraphs: [
+  1515→          "Redimensionar é útil para preparar imagens para web, e-mails e redes sociais, que costumam ter requisitos de tamanho específicos.",
+  1516→          "Ao reduzir dimensões, o arquivo também fica menor, ajudando no desempenho.",
+  1517→        ],
+  1518→      },
+  1519→    ],
+  1520→    howTo: [
+  1521→      "Selecione uma imagem.",
+  1522→      "Defina a nova largura e altura (ou porcentagem).",
+  1523→      "Mantenha ou não a proporção.",
+  1524→      "Baixe a imagem redimensionada.",
+  1525→    ],
+  1526→    example:
+  1527→      "Exemplo: reduza uma foto de 4000×3000 para 800×600 para enviá-la por e-mail.",
+  1528→    benefits: [
+  1529→      "Por pixels ou porcentagem",
+  1530→      "Opção de manter proporção",
+  1531→      "Processamento local e privado",
+  1532→    ],
+  1533→    faq: [
+  1534→      {
+  1535→        q: "Redimensionar perde qualidade?",
+  1536→        a: "Ao aumentar, sim, a imagem pode ficar pixelada. Ao reduzir, a perda é mínima e o arquivo fica menor.",
+  1537→      },
+  1538→      {
+  1539→        q: "Como manter a proporção?",
+  1540→        a: "Ative a opção de manter proporção. Ao alterar a largura, a altura ajusta automaticamente.",
+  1541→      },
+  1542→    ],
+  1543→  },
+  1544→
+  1545→  // ===================== PRODUTIVIDADE =====================
+  1546→  {
+  1547→    slug: "cronometro-online",
+  1548→    title: "Cronômetro Online",
+  1549→    name: "Cronômetro",
+  1550→    category: "produtividade",
+  1551→    icon: "Timer",
+  1552→    tagline: "Cronômetro preciso com voltas e controle total.",
+  1553→    description:
+  1554→      "Cronômetro online grátis. Marque o tempo com precisão de milissegundos, registre voltas e controle iniciar, parar e zerar.",
+  1555→    keywords: [
+  1556→      "cronômetro online",
+  1557→      "cronometro online grátis",
+  1558→      "marcar tempo",
+  1559→      "cronômetro com voltas",
+  1560→      "timer online",
+  1561→    ],
+  1562→    intro:
+  1563→      "Cronômetro online preciso com milissegundos e registro de voltas. Inicie, pause e zere com um clique.",
+  1564→    content: [
+  1565→      {
+  1566→        heading: "Para que usar um cronômetro online",
+  1567→        paragraphs: [
+  1568→          "Um cronômetro online é prático para atividades físicas, estudos, cozinhar, apresentações e qualquer tarefa onde medir o tempo seja importante.",
+  1569→          "Como roda no navegador, está sempre à mão em qualquer dispositivo, sem instalar nada.",
+  1570→        ],
+  1571→      },
+  1572→    ],
+  1573→    howTo: [
+  1574→      "Clique em iniciar para começar a contar.",
+  1575→      "Use voltas para registrar tempos parciais.",
+  1576→      "Pause e retome quando precisar.",
+  1577→      "Zere para começar do zero.",
+  1578→    ],
+  1579→    example:
+  1580→      "Exemplo: use as voltas para registrar o tempo de cada volta em uma corrida.",
+  1581→    benefits: [
+  1582→      "Precisão de milissegundos",
+  1583→      "Registro de voltas",
+  1584→      "Funciona offline após carregar",
+  1585→    ],
+  1586→    faq: [
+  1587→      {
+  1588→        q: "O cronômetro continua se eu fechar a aba?",
+  1589→        a: "Não. O cronômetro roda apenas enquanto a aba estiver aberta. Para sessões longas, mantenha a aba aberta.",
+  1590→      },
+  1591→      {
+  1592→        q: "Funciona no celular?",
+  1593→        a: "Sim. O cronômetro é responsivo e funciona em qualquer dispositivo com navegador.",
+  1594→      },
+  1595→    ],
+  1596→  },
+  1597→  {
+  1598→    slug: "contador-palavras",
+  1599→    title: "Contador de Palavras",
+  1600→    name: "Contador de Palavras",
+  1601→    category: "produtividade",
+  1602→    icon: "Type",
+  1603→    tagline: "Conte palavras, caracteres e tempo de leitura.",
+  1604→    description:
+  1605→      "Contador de palavras online grátis. Conte palavras, caracteres, frases e tempo de leitura de qualquer texto instantaneamente.",
+  1606→    keywords: [
+  1607→      "contador de palavras",
+  1608→      "contar palavras online",
+  1609→      "contador de caracteres",
+  1610→      "tempo de leitura",
+  1611→      "contar caracteres",
+  1612→    ],
+  1613→    intro:
+  1614→      "Conte palavras, caracteres, frases e parágrafos de qualquer texto. Veja também o tempo estimado de leitura.",
+  1615→    content: [
+  1616→      {
+  1617→        heading: "Por que contar palavras",
+  1618→        paragraphs: [
+  1619→          "Contar palavras é essencial para redações, artigos, posts e textos com limite de tamanho. Saber o tempo de leitura ajuda a planejar conteúdo para a web.",
+  1620→          "A média de leitura de um adulto é cerca de 200 palavras por minuto.",
+  1621→        ],
+  1622→      },
+  1623→    ],
+  1624→    howTo: [
+  1625→      "Cole ou digite o texto na área de entrada.",
+  1626→      "Veja as estatísticas atualizarem em tempo real.",
+  1627→      "Use os contadores para ajustar o tamanho do texto.",
+  1628→    ],
+  1629→    example:
+  1630→      "Exemplo: um texto de 400 palavras tem tempo de leitura estimado de 2 minutos.",
+  1631→    benefits: [
+  1632→      "Contagem em tempo real",
+  1633→      "Inclui caracteres, frases e parágrafos",
+  1634→      "Tempo de leitura estimado",
+  1635→    ],
+  1636→    faq: [
+  1637→      {
+  1638→        q: "Como o tempo de leitura é calculado?",
+  1639→        a: "Dividimos o número de palavras por 200 (média de leitura). Um texto de 400 palavras leva cerca de 2 minutos.",
+  1640→      },
+  1641→      {
+  1642→        q: "Os dados são enviados para algum servidor?",
+  1643→        a: "Não. A contagem acontece no seu navegador. Seu texto não é enviado para lugar algum.",
+  1644→      },
+  1645→    ],
+  1646→  },
+  1647→  {
+  1648→    slug: "conversor-fuso-horario",
+  1649→    title: "Conversor de Fuso Horário",
+  1650→    name: "Fuso Horário",
+  1651→    category: "produtividade",
+  1652→    icon: "Globe",
+  1653→    tagline: "Compare horários em diferentes fusos do mundo.",
+  1654→    description:
+  1655→      "Conversor de fuso horário online grátis. Compare horários entre cidades e fusos do mundo para reuniões e viagens.",
+  1656→    keywords: [
+  1657→      "conversor de fuso horário",
+  1658→      "fuso horário online",
+  1659→      "diferença de horário",
+  1660→      "hora mundial",
+  1661→      "comparar fusos",
+  1662→    ],
+  1663→    intro:
+  1664→      "Compare horários entre diferentes fusos horários do mundo. Veja a diferença entre cidades para planejar reuniões e viagens.",
+  1665→    content: [
+  1666→      {
+  1667→        heading: "Como funcionam os fusos horários",
+  1668→        paragraphs: [
+  1669→          "A Terra é dividida em 24 fusos horários, cada um com cerca de 15 graus de longitude. Cada fuso tem uma hora de diferença em relação ao vizinho.",
+  1670→          "Alguns países adotam horário de verão, alterando o fuso durante parte do ano. A ferramenta usa o fuso oficial atual.",
+  1671→        ],
+  1672→      },
+  1673→    ],
+  1674→    howTo: [
+  1675→      "Selecione a cidade ou fuso de origem.",
+  1676→      "Selecione a cidade ou fuso de destino.",
+  1677→      "Veja a hora correspondente em cada local.",
+  1678→    ],
+  1679→    example:
+  1680→      "Exemplo: quando são 14h em São Paulo (BRT), são 18h em Londres e 13h em Nova York (variando com o horário de verão).",
+  1681→    benefits: [
+  1682→      "Comparação em tempo real",
+  1683→      "Várias cidades do mundo",
+  1684→      "Prático para reuniões internacionais",
+  1685→    ],
+  1686→    faq: [
+  1687→      {
+  1688→        q: "As horas consideram horário de verão?",
+  1689→        a: "Sim, o navegador usa o fuso oficial atual, que já considera horário de verão quando aplicável.",
+  1690→      },
+  1691→      {
+  1692→        q: "Por que a diferença entre duas cidades muda?",
+  1693→        a: "Porque países diferentes adotam horário de verão em datas diferentes, alterando a diferença entre eles ao longo do ano.",
+  1694→      },
+  1695→    ],
+  1696→  },
+  1697→  {
+  1698→    slug: "checklist-online",
+  1699→    name: "Checklist Online",
+  1700→    title: "Checklist Online",
+  1701→    category: "produtividade",
+  1702→    icon: "ListChecks",
+  1703→    tagline: "Crie listas de tarefas e marque o que fez.",
+  1704→    description:
+  1705→      "Checklist online grátis. Crie listas de tarefas, marque itens concluídos e organize seu dia — tudo salvo no seu navegador.",
+  1706→    keywords: [
+  1707→      "checklist online",
+  1708→      "lista de tarefas",
+  1709→      "to-do list",
+  1710→      "lista de afazeres",
+  1711→      "checklist grátis",
+  1712→    ],
+  1713→    intro:
+  1714→      "Crie listas de tarefas e marque itens conforme conclui. Sua lista fica salva no navegador para você voltar quando quiser.",
+  1715→    content: [
+  1716→      {
+  1717→        heading: "Por que usar um checklist",
+  1718→        paragraphs: [
+  1719→          "Listas de tarefas ajudam a organizar o dia, não esquecer compromissos e sentir a satisfação de concluir itens. Reduz a carga mental e melhora a produtividade.",
+  1720→          "Esta ferramenta salva sua lista no armazenamento local do navegador, então você pode voltar depois e continuar de onde parou.",
+  1721→        ],
+  1722→      },
+  1723→    ],
+  1724→    howTo: [
+  1725→      "Digite uma tarefa e pressione enter para adicionar.",
+  1726→      "Marque o quadrado para concluir um item.",
+  1727→      "Use o ícone de lixo para remover itens.",
+  1728→      "Sua lista fica salva automaticamente.",
+  1729→    ],
+  1730→    example:
+  1731→      "Exemplo: crie uma checklist de compras e marque os itens enquanto compra.",
+  1732→    benefits: [
+  1733→      "Salva automaticamente no navegador",
+  1734→      "Adicionar e remover com um clique",
+  1735→      "Funciona offline após carregar",
+  1736→    ],
+  1737→    faq: [
+  1738→      {
+  1739→        q: "Minha lista some se fechar o navegador?",
+  1740→        a: "Não. A lista é salva no armazenamento local do navegador e permanece disponível ao retornar.",
+  1741→      },
+  1742→      {
+  1743→        q: "Posso usar no celular?",
+  1744→        a: "Sim, a ferramenta é responsiva e funciona em qualquer dispositivo com navegador.",
+  1745→      },
+  1746→    ],
+  1747→  },
+  1748→]
+  1749→
+  1750→export function getTool(slug: string): Tool | undefined {
+  1751→  return tools.find((t) => t.slug === slug)
+  1752→}
+  1753→
+  1754→export function getToolsByCategory(category: string): Tool[] {
+  1755→  return tools.filter((t) => t.category === category)
+  1756→}
+  1757→
+  1758→export function getPopularTools(): Tool[] {
+  1759→  return tools.filter((t) => t.popular)
+  1760→}
+  1761→
+  1762→export function getAllSlugs(): string[] {
+  1763→  return tools.map((t) => t.slug)
+  1764→}
+  1765→

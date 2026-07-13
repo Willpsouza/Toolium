@@ -434,7 +434,7 @@ export const tools: Tool[] = [
       "Confira o salário líquido aproximado.",
     ],
     example:
-      "Exemplo: um salário bruto de R$ 4.000 com a estimativa de descontos gera um líquido aproximado que varia conforme dependentes e faixas vigentes.",
+      "Exemplo: um salário bruto de R$ 4.000 sem dependentes gera um líquido estimado de cerca de R$ 3.050 após INSS e IRRF, conforme as faixas vigentes. Com dependentes, o líquido aumenta por conta das deduções no imposto de renda.",
     benefits: [
       "Mostra o detalhamento de cada desconto",
       "Considera dependentes no IRRF",
@@ -484,7 +484,7 @@ export const tools: Tool[] = [
       "Veja sua idade em anos, meses, dias, semanas e total de dias.",
     ],
     example:
-      "Exemplo: quem nasceu em 01/01/2000 tem, hoje, idade exata exibida em anos, meses e dias, além do total de dias vividos.",
+      "Exemplo: quem nasceu em 1º de janeiro de 2000 já viveu mais de 9.000 dias. A calculadora mostra a idade exata em anos, meses e dias, além do total de dias e semanas.",
     benefits: [
       "Mostra idade em várias unidades",
       "Aceita data de referência personalizada",
@@ -655,13 +655,13 @@ export const tools: Tool[] = [
       "Exemplo: 25 °C equivalem a 77 °F e 298,15 K.",
     benefits: [
       "Converte entre as três escalas principais",
-          "Resultado em tempo real",
+      "Resultado em tempo real",
       "Útil para estudos, receitas e viagens",
     ],
     faq: [
       {
         q: "Como converter Celsius para Fahrenheit de cabeça?",
-        a: "Multiplique por 9, divida por 5 e some 32. Por exemplo, 20 °C → 36 × ... → 68 °F.",
+        a: "Multiplique a temperatura em Celsius por 9, divida por 5 e some 32. Por exemplo, 20 °C: 20 × 9 = 180; 180 ÷ 5 = 36; 36 + 32 = 68 °F.",
       },
       {
         q: "Kelvin usa grau?",
@@ -953,7 +953,7 @@ export const tools: Tool[] = [
       "Veja o resultado com base na taxa de referência.",
     ],
     example:
-      "Exemplo: um valor em dólares convertido para reais usando a taxa de referência mostra o equivalente aproximado em BRL.",
+      "Exemplo: US$ 100 a uma taxa de referência de R$ 5,00 equivalem a aproximadamente R$ 500,00. O valor real pode variar conforme spread e IOF cobrado pela instituição.",
     benefits: [
       "Várias moedas suportadas",
       "Resultado instantâneo",
