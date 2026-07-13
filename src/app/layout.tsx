@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import Script from "next/script"
 import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { SiteHeader } from "@/components/layout/site-header"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { CookieConsent } from "@/components/cookie-consent"
+import { AdsenseScript } from "@/components/ads/adsense-script"
 import { siteConfig } from "@/lib/seo"
 import { organizationSchema, websiteSchema } from "@/lib/schema"
 
@@ -123,14 +123,8 @@ export default function RootLayout({
           <Toaster />
         </ThemeProvider>
 
-        {/* Google AdSense */}
-        <Script
-          id="adsbygoogle-init"
-          async
-          strategy="afterInteractive"
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteConfig.adsenseClient}`}
-          crossOrigin="anonymous"
-        />
+        {/* Google AdSense — carregado somente após consentimento de cookies (LGPD/GDPR) */}
+        <AdsenseScript />
       </body>
     </html>
   )

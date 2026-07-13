@@ -6,6 +6,44 @@
 
 ---
 
+## [Etapa 07] — Google AdSense e Qualidade de Publicação
+
+- **Data**: etapa 07
+- **Responsável**: Especialista em Google AdSense e Qualidade de Publicação
+- **Tipo**: AdSense (baixo risco — preparação para aprovação; sem alterar funcionalidades/ferramentas/arquitetura/layout)
+
+### Resumo
+Auditoria de conformidade com boas práticas AdSense. 6 itens identificados, 3 corrigidos, 3 adiados (dependem de slots reais pós-aprovação). Correções: (1) criado `public/ads.txt` com linha do Google; (2) criado `AdsenseScript` (client component) que carrega o script AdSense **somente após consentimento "accepted"** no banner de cookies (LGPD/GDPR) — `CookieConsent` passou a disparar evento `toolium:cookie-consent-changed`; `layout.tsx` substituiu `<Script>` direto por `<AdsenseScript />`; (3) adicionado 1 `<AdBanner />` na listagem `/ferramentas`. Validado via Agent Browser: script ausente sem consentimento, presente após aceite (sem recarregar). Probabilidade qualitativa de conformidade: ALTA (não garante aprovação).
+
+### Arquivos modificados
+- `src/components/cookie-consent.tsx` — adicionado `window.dispatchEvent(new Event("toolium:cookie-consent-changed"))` em `setConsent`
+- `src/app/layout.tsx` — substituído `<Script>` AdSense direto por `<AdsenseScript />` (import atualizado)
+- `src/app/ferramentas/page.tsx` — adicionado `<AdBanner className="my-12" />` + import
+
+### Arquivos criados
+- `public/ads.txt` — `google.com, pub-2570963650556560, DIRECT, f08c47fec0942fa0`
+- `src/components/ads/adsense-script.tsx` — client component com gating por consentimento
+- `docs/ADSENSE_AUDIT.md` (plano FASE 2)
+- `docs/RELATORIO_ETAPA_07.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ limpo
+- `bunx tsc --noEmit` (`src/`) → ✅ sem erros
+- Dev server → ✅ rotas 200; `/ads.txt` HTTP 200
+- AdBanner count: tool page 3 (preservado), home 1, listagem 1 (novo), categoria 1
+- Agent Browser: sem consentimento → `scriptPresent: false`, `adsbygoogleLoaded: false`; após "Aceitar" → `scriptPresent: true`, `adsbygoogleLoaded: true` (sem reload); sem console errors
+- Build real não executado (restrição de ambiente); alterações são 1 arquivo de texto + 1 componente client + 1 evento + 1 substituição de import + 1 AdBanner — impacto nulo
+
+### Itens adiados
+- AD-02: slots reais nos `<AdBanner />` (pós-aprovação AdSense, criar blocos no painel)
+- AD-05: otimizar `format` por posição (só com slots reais)
+- AD-06: `data-ad-layout` avançado (opcional)
+
+---
+
 ## [Etapa 06] — UX Lead
 
 - **Data**: etapa 06

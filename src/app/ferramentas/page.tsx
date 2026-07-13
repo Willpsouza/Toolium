@@ -2,6 +2,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { ChevronRight } from "lucide-react"
 import { ToolsExplorer } from "@/components/tools/tools-explorer"
+import { AdBanner } from "@/components/ads/ad-banner"
 import { tools } from "@/data/tools"
 import { categories } from "@/data/categories"
 import { buildMetadata } from "@/lib/seo"
@@ -82,6 +83,8 @@ export default function ToolsPage() {
       <div className="mt-10">
         <ToolsExplorer tools={tools} />
       </div>
+
+      <AdBanner className="my-12" />
 
       <script
         type="application/ld+json"

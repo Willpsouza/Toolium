@@ -32,6 +32,11 @@ export function CookieConsent() {
       /* ignore */
     }
     setVisible(false)
+    // Notifica outros componentes (ex.: AdsenseScript) na mesma aba de que
+    // o consentimento mudou, para que possam reagir sem recarregar a página.
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("toolium:cookie-consent-changed"))
+    }
   }
 
   if (!visible) return null
