@@ -6,6 +6,44 @@
 
 ---
 
+## [Etapa 10] — Lead QA Engineer (Release v1.0)
+
+- **Data**: etapa 10
+- **Responsável**: Lead QA Engineer
+- **Tipo**: QA final (correção de defeitos reais; sem alterar funcionalidades/layout/arquitetura)
+
+### Resumo
+Auditoria completa de QA da Release Candidate v1.0. Cobertura: 43 rotas (HTTP 200), 10 breakpoints de responsividade (320-1920px), console errors/warnings/hydration em 10+ páginas, dark mode, metadata routes, AdSense gating, 404/500. Encontrados 2 defeitos MÉDIO (overflow horizontal em mobile 320-375px), ambos corrigidos: (1) containers de tabela em 3 ferramentas (`overflow-y-auto` → `overflow-auto`); (2) header da seção "Ferramentas relacionadas" (`flex` → `flex-col sm:flex-row`). Após correções: zero erros lint, zero erros TS, zero console errors, zero hydration errors, zero overflow em todos os breakpoints. Decisão: GO para publicação.
+
+### Arquivos modificados
+- `src/components/tools/calculators/calculadora-financiamento.tsx` — `overflow-y-auto` → `overflow-auto` no container da tabela de amortização
+- `src/components/tools/converters/conversor-moedas.tsx` — `overflow-y-auto` → `overflow-auto` no container da tabela de moedas
+- `src/components/tools/productivity/cronometro-online.tsx` — `overflow-y-auto` → `overflow-auto` no container da tabela de voltas
+- `src/components/tools/tool-page.tsx` — header de "Ferramentas relacionadas": `flex items-center justify-between` → `flex flex-col sm:flex-row sm:items-center sm:justify-between`
+
+### Arquivos criados
+- `docs/RELEASE_NOTES_v1.0.md`
+- `docs/KNOWN_ISSUES.md`
+- `docs/GO_NO_GO.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ 0 erros, 0 warnings
+- `bunx tsc --noEmit` (`src/`) → ✅ 0 erros
+- `dev.log` (fresco) → ✅ 0 erros
+- 32 ferramentas → ✅ todas HTTP 200
+- 10 breakpoints × 3 page types → ✅ zero overflow
+- 8 ferramentas adicionais @360px → ✅ zero overflow
+- Console errors em 10+ páginas → ✅ 0
+- Hydration errors → ✅ 0
+- Dark mode → ✅ funciona
+- Metadata routes (6) → ✅ todas 200
+- Decisão: **GO**
+
+---
+
 ## [Etapa 09] — Security Engineer
 
 - **Data**: etapa 09

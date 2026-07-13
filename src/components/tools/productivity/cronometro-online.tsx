@@ -171,7 +171,7 @@ export default function CronometroOnline() {
             "Volta" para registrar tempos parciais.
           </div>
         ) : (
-          <div className="max-h-64 overflow-y-auto scrollbar-thin rounded-lg border border-border bg-background">
+          <div className="max-h-64 overflow-auto scrollbar-thin rounded-lg border border-border bg-background">
             <table className="w-full text-sm">
               <thead className="sticky top-0 z-10 bg-muted/40 backdrop-blur">
                 <tr className="text-left text-xs uppercase tracking-wide text-muted-foreground">

@@ -171,7 +171,7 @@ export default function FinancingCalculator() {
           <h3 className="text-sm font-medium text-muted-foreground">
             Prévia das {parcelas.length} primeiras parcelas (Tabela Price)
           </h3>
-          <div className="max-h-64 overflow-y-auto scrollbar-thin rounded-xl border border-border">
+          <div className="max-h-64 overflow-auto scrollbar-thin rounded-xl border border-border">
             <Table>
               <TableHeader className="sticky top-0 bg-muted/80 backdrop-blur">
                 <TableRow>

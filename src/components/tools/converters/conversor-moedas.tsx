@@ -197,7 +197,7 @@ export default function CurrencyConverter() {
               })} ${from} equivale a`
             : "Equivalência em todas as moedas"}
         </h3>
-        <div className="max-h-96 overflow-y-auto rounded-lg border border-border/60">
+        <div className="max-h-96 overflow-auto rounded-lg border border-border/60">
           <table className="w-full text-sm">
             <thead className="sticky top-0 z-10 bg-muted/80 backdrop-blur">
               <tr className="text-left">

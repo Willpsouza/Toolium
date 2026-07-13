@@ -241,7 +241,7 @@ function RelatedTools({ current }: { current: Tool }) {
 
   return (
     <section className="mt-12">
-      <div className="flex items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 mb-6">
         <div className="flex items-center gap-2">
           <Sparkles className="size-5 text-brand" />
           <h2 className="text-2xl font-bold tracking-tight">Ferramentas relacionadas</h2>
