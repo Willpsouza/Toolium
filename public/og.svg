@@ -1,0 +1,33 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <rect width="1200" height="630" fill="url(#oggrad)"/>
+  <g opacity="0.5">
+    <line x1="0" y1="157.5" x2="1200" y2="157.5" stroke="white" stroke-opacity="0.05"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="white" stroke-opacity="0.05"/>
+    <line x1="0" y1="472.5" x2="1200" y2="472.5" stroke="white" stroke-opacity="0.05"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="white" stroke-opacity="0.05"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="white" stroke-opacity="0.05"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="white" stroke-opacity="0.05"/>
+  </g>
+  <g transform="translate(80, 80)">
+    <rect width="64" height="64" rx="14" fill="white"/>
+    <path d="M16 22C16 20.8954 16.8954 20 18 20H46C47.1046 20 48 20.8954 48 22V26C48 27.1046 47.1046 28 46 28H18C16.8954 28 16 27.1046 16 26V22Z" fill="#0A0A0A"/>
+    <path d="M16 38C16 36.8954 16.8954 36 18 36H34C35.1046 36 36 36.8954 36 38V42C36 43.1046 35.1046 44 34 44H18C16.8954 44 16 43.1046 16 42V38Z" fill="#0A0A0A" fill-opacity="0.8"/>
+    <circle cx="46" cy="40" r="6" fill="#10B981"/>
+    <path d="M43.5 40L45.5 42L48.5 38.5" stroke="#04140D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="164" y="125" font-family="Geist, Arial, sans-serif" font-size="32" font-weight="600" fill="white">Tool<tspan fill="#10B981">ium</tspan></text>
+  <text x="80" y="330" font-family="Geist, Arial, sans-serif" font-size="76" font-weight="700" fill="white" letter-spacing="-2">Ferramentas online</text>
+  <text x="80" y="420" font-family="Geist, Arial, sans-serif" font-size="76" font-weight="700" fill="white" letter-spacing="-2">gratuitas e rápidas</text>
+  <text x="80" y="490" font-family="Geist, Arial, sans-serif" font-size="30" font-weight="400" fill="white" fill-opacity="0.7">Calculadoras, conversores e utilidades — 100% grátis, sem cadastro.</text>
+  <g transform="translate(80, 540)">
+    <rect width="360" height="48" rx="24" fill="#10B981"/>
+    <text x="180" y="30" font-family="Geist, Arial, sans-serif" font-size="18" font-weight="600" fill="#04140D" text-anchor="middle">Explorar ferramentas</text>
+  </g>
+  <defs>
+    <radialGradient id="oggrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 0) rotate(90) scale(630 1200)">
+      <stop stop-color="#10B981" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
