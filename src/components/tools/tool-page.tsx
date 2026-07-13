@@ -1,5 +1,6 @@
 import Link from "next/link"
 import * as React from "react"
+import { Suspense } from "react"
 import { ChevronRight, CheckCircle2, Lightbulb, ListChecks, BookOpen, ArrowRight, Sparkles } from "lucide-react"
 import { AdBanner } from "@/components/ads/ad-banner"
 import { FaqSection } from "@/components/tools/faq-section"
@@ -101,7 +102,9 @@ export function ToolPage({ tool }: ToolPageProps) {
       {/* Tool */}
       <section className="mt-2" aria-label={tool.title}>
         <div className="rounded-2xl border border-border/70 bg-card p-5 sm:p-8 shadow-sm">
-          <ToolComponent />
+          <Suspense fallback={<ToolSkeleton />}>
+            <ToolComponent />
+          </Suspense>
         </div>
       </section>
 
@@ -256,5 +259,22 @@ function RelatedTools({ current }: { current: Tool }) {
         ))}
       </div>
     </section>
+  )
+}
+
+/**
+ * Skeleton exibido enquanto o chunk da ferramenta carrega (navegação client-side).
+ * Usa apenas classes Tailwind existentes — sem novo componente ou dependência.
+ */
+function ToolSkeleton() {
+  return (
+    <div className="flex flex-col gap-4" aria-hidden="true">
+      <div className="h-4 w-1/3 rounded bg-muted animate-pulse" />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="h-10 rounded-md bg-muted animate-pulse" />
+        <div className="h-10 rounded-md bg-muted animate-pulse" />
+      </div>
+      <div className="h-24 rounded-xl bg-muted animate-pulse" />
+    </div>
   )
 }

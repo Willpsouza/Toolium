@@ -1,46 +1,60 @@
 import * as React from "react"
+import dynamic from "next/dynamic"
+
+/**
+ * Registry de componentes de ferramenta.
+ *
+ * Otimização (Etapa 08 — PERF-01): cada ferramenta é carregada via `next/dynamic`
+ * para que o JavaScript de uma ferramenta seja code-split em seu próprio chunk.
+ * Assim, ao visitar `/calculadora-imc`, o navegador baixa apenas o chunk do IMC,
+ * não o código das 32 ferramentas. Como as páginas são SSG (generateStaticParams),
+ * o HTML já vem completo do build — o dynamic import apenas separa o JS de hidratação.
+ *
+ * `ssr: true` (default) preserva o server-side rendering: o conteúdo da ferramenta
+ * continua no HTML estático. Apenas o JS é lazy-loaded para hidratação.
+ */
 
 // Calculadoras
-import PercentCalculator from "./calculators/calculadora-porcentagem"
-import CompoundInterestCalculator from "./calculators/calculadora-juros-compostos"
-import SimpleInterestCalculator from "./calculators/calculadora-juros-simples"
-import FinancingCalculator from "./calculators/calculadora-financiamento"
-import DiscountCalculator from "./calculators/calculadora-desconto"
-import RuleOfThreeCalculator from "./calculators/calculadora-regra-tres"
-import NetSalaryCalculator from "./calculators/calculadora-salario-liquido"
-import AgeCalculator from "./calculators/calculadora-idade"
-import DateDifferenceCalculator from "./calculators/diferenca-entre-datas"
-import BmiCalculator from "./calculators/calculadora-imc"
+const PercentCalculator = dynamic(() => import("./calculators/calculadora-porcentagem"))
+const CompoundInterestCalculator = dynamic(() => import("./calculators/calculadora-juros-compostos"))
+const SimpleInterestCalculator = dynamic(() => import("./calculators/calculadora-juros-simples"))
+const FinancingCalculator = dynamic(() => import("./calculators/calculadora-financiamento"))
+const DiscountCalculator = dynamic(() => import("./calculators/calculadora-desconto"))
+const RuleOfThreeCalculator = dynamic(() => import("./calculators/calculadora-regra-tres"))
+const NetSalaryCalculator = dynamic(() => import("./calculators/calculadora-salario-liquido"))
+const AgeCalculator = dynamic(() => import("./calculators/calculadora-idade"))
+const DateDifferenceCalculator = dynamic(() => import("./calculators/diferenca-entre-datas"))
+const BmiCalculator = dynamic(() => import("./calculators/calculadora-imc"))
 
 // Conversores
-import TemperatureConverter from "./converters/conversor-temperatura"
-import LengthConverter from "./converters/conversor-comprimento"
-import WeightConverter from "./converters/conversor-peso"
-import VolumeConverter from "./converters/conversor-volume"
-import AreaConverter from "./converters/conversor-area"
-import SpeedConverter from "./converters/conversor-velocidade"
-import CurrencyConverter from "./converters/conversor-moedas"
-import TimeConverter from "./converters/conversor-tempo"
+const TemperatureConverter = dynamic(() => import("./converters/conversor-temperatura"))
+const LengthConverter = dynamic(() => import("./converters/conversor-comprimento"))
+const WeightConverter = dynamic(() => import("./converters/conversor-peso"))
+const VolumeConverter = dynamic(() => import("./converters/conversor-volume"))
+const AreaConverter = dynamic(() => import("./converters/conversor-area"))
+const SpeedConverter = dynamic(() => import("./converters/conversor-velocidade"))
+const CurrencyConverter = dynamic(() => import("./converters/conversor-moedas"))
+const TimeConverter = dynamic(() => import("./converters/conversor-tempo"))
 
 // Geradores
-import PasswordGenerator from "./generators/gerador-senhas"
-import QrCodeGenerator from "./generators/gerador-qrcode"
-import LoremIpsumGenerator from "./generators/gerador-lorem-ipsum"
-import NameGenerator from "./generators/gerador-nomes"
-import HashGenerator from "./generators/gerador-hash"
-import ColorGenerator from "./generators/gerador-cores"
+const PasswordGenerator = dynamic(() => import("./generators/gerador-senhas"))
+const QrCodeGenerator = dynamic(() => import("./generators/gerador-qrcode"))
+const LoremIpsumGenerator = dynamic(() => import("./generators/gerador-lorem-ipsum"))
+const NameGenerator = dynamic(() => import("./generators/gerador-nomes"))
+const HashGenerator = dynamic(() => import("./generators/gerador-hash"))
+const ColorGenerator = dynamic(() => import("./generators/gerador-cores"))
 
 // Imagem
-import ImageCompressor from "./image/compressor-imagem"
-import JpgToPngConverter from "./image/conversor-jpg-png"
-import PngToWebpConverter from "./image/conversor-png-webp"
-import ImageResizer from "./image/redimensionador-imagem"
+const ImageCompressor = dynamic(() => import("./image/compressor-imagem"))
+const JpgToPngConverter = dynamic(() => import("./image/conversor-jpg-png"))
+const PngToWebpConverter = dynamic(() => import("./image/conversor-png-webp"))
+const ImageResizer = dynamic(() => import("./image/redimensionador-imagem"))
 
 // Produtividade
-import Stopwatch from "./productivity/cronometro-online"
-import WordCounter from "./productivity/contador-palavras"
-import TimezoneConverter from "./productivity/conversor-fuso-horario"
-import Checklist from "./productivity/checklist-online"
+const Stopwatch = dynamic(() => import("./productivity/cronometro-online"))
+const WordCounter = dynamic(() => import("./productivity/contador-palavras"))
+const TimezoneConverter = dynamic(() => import("./productivity/conversor-fuso-horario"))
+const Checklist = dynamic(() => import("./productivity/checklist-online"))
 
 export const toolComponents: Record<string, React.ComponentType> = {
   // Calculadoras

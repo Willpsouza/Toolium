@@ -6,6 +6,44 @@
 
 ---
 
+## [Etapa 08] — Performance Engineer
+
+- **Data**: etapa 08
+- **Responsável**: Performance Engineer
+- **Tipo**: Performance (baixo risco — dynamic imports, Suspense, loading.tsx; sem alterar funcionalidades/layout/ferramentas/rotas/SEO/AdSense)
+
+### Resumo
+Auditoria de performance e Core Web Vitals. 5 itens identificados, 3 implementados, 2 adiados. Principal otimização: `registry.tsx` convertido de imports estáticos para `next/dynamic` — antes cada página de ferramenta carregava JS das 32 ferramentas; agora carrega apenas a exibida (redução estimada ~70% do bundle JS por tool page). Também: `<Suspense>` boundary com `ToolSkeleton` no `tool-page.tsx` (skeleton durante navegação client-side); `loading.tsx` na rota `[slug]` (perceived performance). Regra de ouro aplicada: memoização adicional e image optimization NÃO implementadas (ganho pequeno, complexidade alta). Funcionalidade 100% preservada (SSG mantido, SSR mantido, hidratação intacta). Validado via Agent Browser.
+
+### Arquivos modificados
+- `src/components/tools/registry.tsx` — 32 imports estáticos → 32 `dynamic(() => import(...))` com `next/dynamic`; `ssr: true` (default) preserva SSG/SSR
+- `src/components/tools/tool-page.tsx` — adicionado `<Suspense fallback={<ToolSkeleton />}>` ao redor de `<ToolComponent />`; import `Suspense` do React; novo componente `ToolSkeleton` (classes Tailwind existentes)
+
+### Arquivos criados
+- `src/app/[slug]/loading.tsx` — skeleton de loading para rota de ferramenta (convenção nativa Next.js)
+- `docs/PERFORMANCE_AUDIT.md` (plano FASE 2)
+- `docs/PERFORMANCE_BASELINE.md` (baseline de performance)
+- `docs/RELATORIO_ETAPA_08.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ limpo
+- `bunx tsc --noEmit` (`src/`) → ✅ sem erros
+- Dev server → ✅ rotas 200
+- Agent Browser: `/calculadora-juros-compostos` renderiza (title, H1, inputs, resultados); sem console errors; skeleton `animate-pulse` disponível
+- Ferramentas, rotas, SEO (Etapa 04), AdSense (Etapa 07), UX (Etapa 06), conteúdo (Etapa 05) — todos preservados
+- Build real não executado (restrição de ambiente); prontidão atestada por lint + tsc + dev server
+
+### Itens adiados
+- PERF-04: `framer-motion` dependência morta (limpeza de dep, não performance de código)
+- PERF-05: prefetch explícito (já otimizado por default do next/link)
+- Memoização adicional (Regra de Ouro — sem ganho claro)
+- Image optimization (já otimizado — SVG inline, canvas previews)
+
+---
+
 ## [Etapa 07] — Google AdSense e Qualidade de Publicação
 
 - **Data**: etapa 07
