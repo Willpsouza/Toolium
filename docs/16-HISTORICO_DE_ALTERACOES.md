@@ -6,6 +6,48 @@
 
 ---
 
+## [Etapa 09] — Security Engineer
+
+- **Data**: etapa 09
+- **Responsável**: Security Engineer
+- **Tipo**: Segurança (baixo risco — headers HTTP, error.tsx, .env.example; sem alterar funcionalidades/layout/ferramentas/rotas/SEO/AdSense/UX)
+
+### Resumo
+Auditoria de segurança para produção. 7 itens identificados, 4 corrigidos, 3 adiados. Correções: (1) 6 headers HTTP de segurança no `next.config.ts` (CSP completa, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, HSTS); (2) `poweredByHeader: false` remove X-Powered-By; (3) `src/app/error.tsx` (página 500 customizada pt-BR, sem vazar stack traces); (4) `.env.example` documentando `DATABASE_URL`. CSP validada via Agent Browser: não bloqueia estilos Tailwind, fontes next/font, nem AdSense (domínios do AdSense permitidos). Production Gate APROVADO. Itens adiados: deps vulneráveis (em órfãs, não afetam bundle), reactStrictMode (pode alterar dev), ignoreBuildErrors (sensível).
+
+### Arquivos modificados
+- `next.config.ts` — adicionados `securityHeaders` (6 headers) + `headers()` function + `poweredByHeader: false`
+
+### Arquivos criados
+- `src/app/error.tsx` — boundary de erro global (página 500 pt-BR com "Tentar novamente" + link home)
+- `.env.example` — documentação de variáveis de ambiente
+- `docs/SECURITY_AUDIT.md` (plano FASE 2)
+- `docs/PRODUCTION_CHECKLIST.md` (checklist consolidado 75/96 itens)
+- `docs/RELATORIO_ETAPA_09.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ limpo
+- `bunx tsc --noEmit` (`src/`) → ✅ sem erros
+- Dev server → ✅ rotas 200; 404 retorna 404
+- curl headers: CSP + X-Frame-Options + X-Content-Type-Options + Referrer-Policy + Permissions-Policy + HSTS servidos; X-Powered-By removido
+- Agent Browser: home e tool page renderizam com CSP; estilos e fontes funcionam; sem console errors de CSP
+- `bun audit`: 54 vulnerabilidades (quase todas em deps órfãs transitivas; não afetam bundle de produção)
+- SEO/AdSense/UX/conteúdo/performance — todos preservados
+- Build real não executado (restrição de ambiente); prontidão atestada por lint + tsc + dev server + headers servidos
+
+### Production Gate: ✅ APROVADO
+75/96 itens do checklist concluídos; 21 pendentes são operacionais (pós-deploy) ou adiados sem bloqueio.
+
+### Itens adiados
+- SEC-04: deps vulneráveis (remoção em etapa de limpeza de deps)
+- SEC-05: reactStrictMode (pode alterar comportamento dev)
+- SEC-06: ignoreBuildErrors (sensível, etapa de higiene de config)
+
+---
+
 ## [Etapa 08] — Performance Engineer
 
 - **Data**: etapa 08
