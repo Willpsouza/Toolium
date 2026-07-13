@@ -6,6 +6,38 @@
 
 ---
 
+## [Etapa 03] — Elevação UX/UI da Homepage
+
+- **Data**: etapa 03
+- **Responsável**: Lead UX/UI Engineer
+- **Tipo**: UX/UI (baixo risco — sem alterar arquitetura, rotas, ferramentas, SEO existente)
+
+### Resumo
+Homepage elevada ao padrão SaaS profissional com melhorias incrementais: substituição das "5 estrelas" (placeholder de avaliação) por uma trust bar factual; adição de stats bar com dados reais (32 ferramentas · 5 categorias · 0 cadastros · R$ 0); nova seção "Para quem é o Toolium" com 4 personas; refinamento de copy do subtítulo e FAQ; reordenação narrativa (Como funciona → Para quem é → Benefícios). Identidade visual, navegação, ferramentas, SEO e AdSense integralmente preservados.
+
+### Arquivos modificados
+- `src/app/page.tsx` — único arquivo editado; `metadata` export intacto (SEO preservado)
+
+### Arquivos criados
+- `docs/RELATORIO_ETAPA_03.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ limpo
+- `bunx tsc --noEmit` (`src/`) → ✅ sem erros
+- Dev server → ✅ `/` retorna 200
+- Agent Browser → ✅ desktop (headings, trust bar, stats, persona section), mobile 390px (sem scroll horizontal), dark mode (contraste OK), ferramenta `/calculadora-juros-compostos` intacta
+- Build real não executado (restrição de ambiente); prontidão atestada por lint + tsc + dev server
+
+### Itens adiados
+- Busca rápida direta no hero (exige componente/rota nova — fora do escopo)
+- OG image em PNG (item de SEO, etapa futura)
+- Microanimações via framer-motion (não instalar dep sem necessidade — R4)
+
+---
+
 ## [Etapa 02] — Padronização de arquitetura + TDF (Toolium Development Framework)
 
 - **Data**: etapa 02

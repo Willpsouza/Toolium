@@ -8,7 +8,11 @@ import {
   Search,
   Sparkles,
   CheckCircle2,
-  Star,
+  BadgeCheck,
+  GraduationCap,
+  Briefcase,
+  Code2,
+  Users,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ToolCard } from "@/components/tools/tool-card"
@@ -81,18 +85,41 @@ const steps = [
   },
 ]
 
+const audiences = [
+  {
+    icon: GraduationCap,
+    title: "Estudantes",
+    description: "Calculadoras de juros, porcentagem, regra de três e conversores para tarefas e estudos.",
+  },
+  {
+    icon: Briefcase,
+    title: "Profissionais",
+    description: "Ferramentas rápidas para finanças, datas e produtividade no dia de trabalho.",
+  },
+  {
+    icon: Code2,
+    title: "Desenvolvedores",
+    description: "Geradores de senhas, hashes, QR Code, cores e utilidades para o desenvolvimento.",
+  },
+  {
+    icon: Users,
+    title: "No dia a dia",
+    description: "IMC, descontos, cronômetro, checklist e conversões para tarefas cotidianas.",
+  },
+]
+
 const homeFaqs = [
   {
     q: "O Toolium é realmente gratuito?",
     a: "Sim, todas as ferramentas do Toolium são 100% gratuitas, sem cadastro e sem limites de uso. Você pode usar quantas vezes quiser.",
   },
   {
-    q: "Preciso instalar algo para usar?",
-    a: "Não. Todas as ferramentas rodam direto no navegador, no celular ou no computador. Não há nada para instalar.",
+    q: "Preciso instalar ou me cadastrar para usar?",
+    a: "Não. Todas as ferramentas rodam direto no navegador, no celular ou no computador. Não há nada para instalar e nenhuma conta para criar.",
   },
   {
     q: "Meus dados ficam salvos ou são enviados para servidores?",
-    a: "A maioria das ferramentas processa tudo no seu próprio navegador, garantindo privacidade. Dados sensíveis nunca saem do seu dispositivo.",
+    a: "A maioria das ferramentas processa tudo no seu próprio navegador, garantindo privacidade. Dados sensíveis, como imagens e senhas, nunca saem do seu dispositivo.",
   },
   {
     q: "As ferramentas funcionam no celular?",
@@ -100,7 +127,7 @@ const homeFaqs = [
   },
   {
     q: "Quantas ferramentas o Toolium tem?",
-    a: "São mais de 30 ferramentas organizadas em cinco categorias: calculadoras, conversores, geradores, imagem e produtividade.",
+    a: `São ${tools.length} ferramentas organizadas em cinco categorias: calculadoras, conversores, geradores, imagem e produtividade.`,
   },
   {
     q: "Como o Toolium se mantém gratuito?",
@@ -110,6 +137,7 @@ const homeFaqs = [
 
 export default function HomePage() {
   const popular = getPopularTools()
+  const popularCount = popular.length
 
   return (
     <>
@@ -117,17 +145,18 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-b border-border/60">
         <div className="absolute inset-0 bg-grid mask-fade-b opacity-60" aria-hidden />
         <div className="absolute inset-0 bg-radial-fade" aria-hidden />
-        <div className="container-page relative py-20 sm:py-28 lg:py-32">
+        <div className="container-page relative py-20 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-              <span className="flex size-1.5 rounded-full bg-brand" />
+              <span className="flex size-1.5 rounded-full bg-brand" aria-hidden />
               {tools.length} ferramentas gratuitas e sem cadastro
             </div>
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Ferramentas online gratuitas para facilitar sua rotina
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl">
-              Calculadoras, conversores e utilidades rápidas, precisas e 100% grátis.
+              Calculadoras, conversores, geradores e utilidades 100% grátis. Rápido, preciso e sem
+              instalação — direto no seu navegador.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild size="lg" className="bg-brand text-brand-foreground hover:bg-brand/90">
@@ -140,15 +169,55 @@ export default function HomePage() {
                 <Link href="/ferramentas/calculadoras">Ver calculadoras</Link>
               </Button>
             </div>
-            <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-              <Star className="size-3.5 fill-brand text-brand" />
-              <Star className="size-3.5 fill-brand text-brand" />
-              <Star className="size-3.5 fill-brand text-brand" />
-              <Star className="size-3.5 fill-brand text-brand" />
-              <Star className="size-3.5 fill-brand text-brand" />
-              <span className="ml-1">Gratuito para sempre · Sem cadastro</span>
-            </div>
+
+            {/* Trust bar — atributos reais, sem inventar avaliações */}
+            <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm">
+              <li className="inline-flex items-center gap-1.5">
+                <Gift className="size-4 text-brand" aria-hidden />
+                <span>100% gratuito</span>
+              </li>
+              <li className="inline-flex items-center gap-1.5">
+                <BadgeCheck className="size-4 text-brand" aria-hidden />
+                <span>Sem cadastro</span>
+              </li>
+              <li className="inline-flex items-center gap-1.5">
+                <Zap className="size-4 text-brand" aria-hidden />
+                <span>Resultado na hora</span>
+              </li>
+              <li className="inline-flex items-center gap-1.5">
+                <ShieldCheck className="size-4 text-brand" aria-hidden />
+                <span>Privacidade garantida</span>
+              </li>
+            </ul>
           </div>
+
+          {/* Stats bar — dados reais do projeto, sem inventar métricas */}
+          <dl className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border/70 bg-border/60 sm:grid-cols-4">
+            <div className="bg-card px-4 py-5 text-center">
+              <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                Ferramentas
+              </dt>
+              <dd className="mt-1 text-2xl font-bold tracking-tight text-foreground">{tools.length}</dd>
+            </div>
+            <div className="bg-card px-4 py-5 text-center">
+              <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                Categorias
+              </dt>
+              <dd className="mt-1 text-2xl font-bold tracking-tight text-foreground">{categories.length}</dd>
+            </div>
+            <div className="bg-card px-4 py-5 text-center">
+              <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                Cadastros necessários
+              </dt>
+              <dd className="mt-1 text-2xl font-bold tracking-tight text-foreground">0</dd>
+            </div>
+            <div className="bg-card px-4 py-5 text-center">
+              <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                Custo
+              </dt>
+              <dd className="mt-1 text-2xl font-bold tracking-tight text-brand">R$ 0</dd>
+            </div>
+          </dl>
         </div>
       </section>
 
@@ -157,7 +226,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Explore por categoria</h2>
           <p className="mt-3 text-muted-foreground text-pretty">
-            Mais de {tools.length} ferramentas organizadas para você encontrar o que precisa rápido.
+            {tools.length} ferramentas organizadas para você encontrar o que precisa rápido.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -172,9 +241,9 @@ export default function HomePage() {
               >
                 <div className="flex items-center justify-between">
                   <div className={cn("flex size-12 items-center justify-center rounded-xl ring-1", accentMap[cat.accent])}>
-                    <Icon className="size-6" />
+                    <Icon className="size-6" aria-hidden />
                   </div>
-                  <ArrowRight className="size-5 text-muted-foreground/40 transition-all group-hover:text-foreground group-hover:translate-x-1" />
+                  <ArrowRight className="size-5 text-muted-foreground/40 transition-all group-hover:text-foreground group-hover:translate-x-1" aria-hidden />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">{cat.name}</h3>
@@ -193,7 +262,7 @@ export default function HomePage() {
             className="group relative flex flex-col gap-4 justify-center items-center rounded-2xl border border-dashed border-border bg-muted/30 p-6 text-center transition-all hover:border-brand hover:bg-brand-muted/30"
           >
             <div className="flex size-12 items-center justify-center rounded-xl bg-brand/10 text-brand">
-              <Sparkles className="size-6" />
+              <Sparkles className="size-6" aria-hidden />
             </div>
             <div>
               <h3 className="text-lg font-semibold">Ver todas as ferramentas</h3>
@@ -213,7 +282,7 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ferramentas populares</h2>
             <p className="mt-3 text-muted-foreground text-pretty">
-              As mais usadas pela comunidade Toolium.
+              {popularCount} das mais usadas para começar rápido.
             </p>
           </div>
           <Button asChild variant="outline" className="self-start sm:self-auto">
@@ -230,34 +299,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="border-y border-border/60 bg-muted/30">
-        <div className="container-page py-16 sm:py-20">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Por que usar o Toolium
-            </h2>
-            <p className="mt-3 text-muted-foreground text-pretty">
-              Tudo o que você precisa, com a simplicidade que você merece.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((b) => (
-              <div
-                key={b.title}
-                className="rounded-2xl border border-border/70 bg-card p-6 transition-colors hover:border-border"
-              >
-                <div className="flex size-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                  <b.icon className="size-5" />
-                </div>
-                <h3 className="mt-4 text-base font-semibold">{b.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground text-pretty">{b.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* How it works */}
       <section className="container-page py-16 sm:py-20">
         <div className="mx-auto max-w-2xl text-center">
@@ -270,13 +311,65 @@ export default function HomePage() {
           {steps.map((step, i) => (
             <div key={step.title} className="relative text-center">
               <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                <step.icon className="size-7" />
+                <step.icon className="size-7" aria-hidden />
               </div>
               <div className="mt-4 text-xs font-semibold uppercase tracking-wider text-brand">
                 Passo {i + 1}
               </div>
               <h3 className="mt-1 text-lg font-semibold">{step.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground text-pretty">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Audiences — Para quem é o Toolium */}
+      <section className="border-y border-border/60 bg-muted/30">
+        <div className="container-page py-16 sm:py-20">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Para quem é o Toolium</h2>
+            <p className="mt-3 text-muted-foreground text-pretty">
+              Feito para quem precisa resolver tarefas rápidas sem perder tempo.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {audiences.map((a) => (
+              <div
+                key={a.title}
+                className="rounded-2xl border border-border/70 bg-card p-6 transition-colors hover:border-border"
+              >
+                <div className="flex size-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                  <a.icon className="size-5" aria-hidden />
+                </div>
+                <h3 className="mt-4 text-base font-semibold">{a.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground text-pretty">{a.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="container-page py-16 sm:py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Por que usar o Toolium
+          </h2>
+          <p className="mt-3 text-muted-foreground text-pretty">
+            Tudo o que você precisa, com a simplicidade que você merece.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((b) => (
+            <div
+              key={b.title}
+              className="rounded-2xl border border-border/70 bg-card p-6 transition-colors hover:border-border"
+            >
+              <div className="flex size-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                <b.icon className="size-5" aria-hidden />
+              </div>
+              <h3 className="mt-4 text-base font-semibold">{b.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground text-pretty">{b.description}</p>
             </div>
           ))}
         </div>
@@ -318,8 +411,7 @@ export default function HomePage() {
               Comece a usar agora, é grátis
             </h2>
             <p className="mt-4 text-pretty text-background/70">
-              Mais de {tools.length} ferramentas online esperando por você. Sem cadastro, sem
-              complicação.
+              {tools.length} ferramentas online esperando por você. Sem cadastro, sem complicação.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild size="lg" className="bg-brand text-brand-foreground hover:bg-brand/90">
