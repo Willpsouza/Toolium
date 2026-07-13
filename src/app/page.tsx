@@ -166,7 +166,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/ferramentas/calculadoras">Ver calculadoras</Link>
+                <Link href="/ferramentas/calculadoras">Ver categorias</Link>
               </Button>
             </div>
 

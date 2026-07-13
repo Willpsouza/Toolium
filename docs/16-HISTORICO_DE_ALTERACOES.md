@@ -6,6 +6,43 @@
 
 ---
 
+## [Etapa 06] — UX Lead
+
+- **Data**: etapa 06
+- **Responsável**: UX Lead
+- **Tipo**: UX (baixo risco — reutilização de componentes existentes; sem novos recursos, sem bibliotecas)
+
+### Resumo
+Auditoria UX em 10 dimensões (UX Score 7,9/10; Friction Score 4,2/10). 5 correções implementadas reutilizando apenas componentes existentes: (1) página 404 customizada em pt-BR com CTAs e populares (`not-found.tsx`); (2) seção "Ferramentas relacionadas" no tool-page (4 cards da mesma categoria); (3) CTA final após FAQ; (4) link "Todas as ferramentas" no footer; (5) botão hero "Ver calculadoras" → "Ver categorias". Pós-implementação: UX Score 9,0; Friction Score 1,2. Nenhuma ferramenta alterada, nenhuma biblioteca instalada, AdSense e SEO preservados.
+
+### Arquivos modificados
+- `src/components/tools/tool-page.tsx` — adicionada seção "Ferramentas relacionadas" (componente `RelatedTools`) + CTA final após FAQ; novos imports (`ToolCard`, `Button`, `getToolsByCategory`, `ArrowRight`, `Sparkles`)
+- `src/components/layout/site-footer.tsx` — adicionado link "Todas as ferramentas" no topo da coluna Populares
+- `src/app/page.tsx` — texto do botão hero: "Ver calculadoras" → "Ver categorias"
+
+### Arquivos criados
+- `src/app/not-found.tsx` — página 404 customizada pt-BR (H1 + CTAs + populares)
+- `docs/UX_AUDIT.md` (avaliação FASE 2)
+- `docs/RELATORIO_ETAPA_06.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ limpo
+- `bunx tsc --noEmit` (`src/`) → ✅ sem erros
+- Dev server → ✅ rotas 200; 404 retorna 404 correto
+- Agent Browser: 404 com CTAs + 10 cards populares; tool-page com 4 relacionadas + CTA; mobile 390px sem overflow; sem console errors
+- SEO (Etapa 04) e AdSense preservados
+- Build real não executado (restrição de ambiente); alterações reutilizam componentes existentes — impacto nulo
+
+### Itens adiados
+- Busca global no header (feature nova)
+- Link "voltar ao topo" no footer (feature nova)
+- Busca rápida no Sheet mobile (feature nova)
+
+---
+
 ## [Etapa 05] — Content Lead & SEO On-Page
 
 - **Data**: etapa 05

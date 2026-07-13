@@ -1,8 +1,10 @@
 import Link from "next/link"
 import * as React from "react"
-import { ChevronRight, CheckCircle2, Lightbulb, ListChecks, BookOpen } from "lucide-react"
+import { ChevronRight, CheckCircle2, Lightbulb, ListChecks, BookOpen, ArrowRight, Sparkles } from "lucide-react"
 import { AdBanner } from "@/components/ads/ad-banner"
 import { FaqSection } from "@/components/tools/faq-section"
+import { ToolCard } from "@/components/tools/tool-card"
+import { Button } from "@/components/ui/button"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,6 +15,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { categories } from "@/data/categories"
 import type { Tool } from "@/data/tools"
+import { getToolsByCategory } from "@/data/tools"
 import { buildMetadata } from "@/lib/seo"
 import { breadcrumbSchema, faqSchema, howToSchema } from "@/lib/schema"
 import { toolComponents } from "@/components/tools/registry"
@@ -179,6 +182,34 @@ export function ToolPage({ tool }: ToolPageProps) {
         <FaqSection faqs={tool.faq} />
       </div>
 
+      {/* Ferramentas relacionadas — descoberta dentro da mesma categoria */}
+      <RelatedTools current={tool} />
+
+      {/* CTA final — próximo passo após a leitura */}
+      <section className="mt-12">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-muted/30 p-8 text-center sm:p-10">
+          <h2 className="text-xl font-bold tracking-tight sm:text-2xl text-balance">
+            Explore mais ferramentas gratuitas
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground text-pretty">
+            Mais de 30 ferramentas online sem cadastro. Encontre a próxima que você precisa.
+          </p>
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button asChild className="bg-brand text-brand-foreground hover:bg-brand/90">
+              <Link href="/ferramentas">
+                Ver todas as ferramentas
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href={`/ferramentas/${tool.category}`}>
+                Mais {category?.name.toLowerCase() ?? "ferramentas"}
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* JSON-LD */}
       {scripts.map((script, i) => (
         <script
@@ -188,5 +219,42 @@ export function ToolPage({ tool }: ToolPageProps) {
         />
       ))}
     </article>
+  )
+}
+
+/**
+ * Seção de ferramentas relacionadas — lista até 4 ferramentas da mesma categoria,
+ * excluindo a ferramenta atual. Reutiliza o ToolCard existente. Se a categoria
+ * tiver menos de 2 ferramentas, a seção não é renderizada.
+ */
+function RelatedTools({ current }: { current: Tool }) {
+  const related = getToolsByCategory(current.category)
+    .filter((t) => t.slug !== current.slug)
+    .slice(0, 4)
+
+  if (related.length === 0) return null
+
+  const category = categories.find((c) => c.slug === current.category)
+
+  return (
+    <section className="mt-12">
+      <div className="flex items-center justify-between gap-4 mb-6">
+        <div className="flex items-center gap-2">
+          <Sparkles className="size-5 text-brand" />
+          <h2 className="text-2xl font-bold tracking-tight">Ferramentas relacionadas</h2>
+        </div>
+        <Button asChild variant="ghost" size="sm" className="text-muted-foreground">
+          <Link href={`/ferramentas/${current.category}`}>
+            Ver {category?.name.toLowerCase() ?? "categoria"}
+            <ArrowRight className="size-3.5" />
+          </Link>
+        </Button>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {related.map((tool) => (
+          <ToolCard key={tool.slug} tool={tool} />
+        ))}
+      </div>
+    </section>
   )
 }

@@ -36,6 +36,14 @@ export function SiteFooter() {
           <div>
             <h3 className="text-sm font-semibold mb-3">Populares</h3>
             <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/ferramentas"
+                  className="text-sm font-medium text-foreground hover:text-brand transition-colors"
+                >
+                  Todas as ferramentas
+                </Link>
+              </li>
               {tools
                 .filter((t) => t.popular)
                 .slice(0, 6)
