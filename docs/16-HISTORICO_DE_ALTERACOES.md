@@ -6,6 +6,42 @@
 
 ---
 
+## [Etapa 04] — SEO Técnico e Indexação
+
+- **Data**: etapa 04
+- **Responsável**: Engenheiro de SEO Técnico
+- **Tipo**: SEO técnico (baixo risco — apenas metadata/schema/sitemap; sem alterar funcionalidades, ferramentas, layout, textos)
+
+### Resumo
+Auditoria + correção de SEO técnico. 8 itens identificados, 6 corrigidos, 2 adiados. Principal correção: **titles duplicados "X | Toolium | Toolium"** em todas as páginas internas (causa: `buildMetadata` sufixava "| Toolium" e o `layout.tsx` aplicava `title.template` por cima). Corrigido retornando title sem sufixo e usando `title.absolute` para títulos que já contêm "Toolium". Também: canonical da home alinhado com sitemap; `SearchAction` inválido removido do WebSite schema; `@id` adicionado em Organization/WebSite com `publisher` vinculado; `foundingDate` (não verificado) e `sameAs: []` (vazio) removidos.
+
+### Arquivos modificados
+- `src/lib/seo.ts` — `buildMetadata`: title sem sufixo + `title.absolute` para nomes com "Toolium"; canonical consistente; OG/Twitter titles com sufixo manual
+- `src/lib/schema.ts` — `organizationSchema` + `websiteSchema`: `@id` adicionado, `foundingDate`/`sameAs`/`potentialAction` removidos, `publisher` referencia `@id`
+- `src/app/layout.tsx` — `alternates.canonical` da home absoluto
+- `src/app/sitemap.ts` — home URL alinhada com canonical
+
+### Arquivos criados
+- `docs/SEO_PLANO_DE_CORRECAO.md`
+- `docs/RELATORIO_ETAPA_04.md`
+
+### Arquivos removidos
+- Nenhum
+
+### Validação
+- `bun run lint` → ✅ limpo
+- `bunx tsc --noEmit` (`src/`) → ✅ sem erros
+- Dev server → ✅ rotas 200
+- curl em 8 rotas: titles sem duplicação, canonical consistente, JSON-LD válido
+- Agent Browser: home/tool/category renderizam corretamente, sem console errors
+- Build real não executado (restrição de ambiente); alterações são apenas strings de metadata/schema — impacto nulo
+
+### Itens adiados
+- SEO-07: OG image em SVG → gerar `og.png` 1200×630 (requer ferramenta externa)
+- SEO-08: `favicon.ico` fallback (requer conversão SVG→ICO)
+
+---
+
 ## [Etapa 03] — Elevação UX/UI da Homepage
 
 - **Data**: etapa 03

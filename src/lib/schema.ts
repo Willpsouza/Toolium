@@ -2,33 +2,29 @@ import { siteConfig } from "./seo"
 import type { ToolFaq } from "@/data/tools"
 import { categories } from "@/data/categories"
 
+const organizationId = `${siteConfig.url}/#organization`
+const websiteId = `${siteConfig.url}/#website`
+
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": organizationId,
   name: siteConfig.name,
   url: siteConfig.url,
   logo: `${siteConfig.url}/icon.svg`,
   description: siteConfig.description,
-  foundingDate: "2024",
-  sameAs: [],
 }
 
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": websiteId,
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
   inLanguage: "pt-BR",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteConfig.url}/ferramentas?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
   publisher: {
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.url,
+    "@id": organizationId,
   },
 }
 

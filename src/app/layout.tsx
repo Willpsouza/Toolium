@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   publisher: siteConfig.publisher,
   applicationName: siteConfig.name,
   alternates: {
-    canonical: "/",
+    canonical: `${siteConfig.url}/`,
   },
   robots: {
     index: true,

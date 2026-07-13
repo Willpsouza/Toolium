@@ -53,20 +53,27 @@ export function buildMetadata({
   noIndex?: boolean
   publishedTime?: string
 }): Metadata {
-  const url = `${siteConfig.url}${path}`
-  const fullTitle = title.includes("Toolium")
-    ? title
-    : `${title} | Toolium`
+  // Canonical sempre absoluto e consistente com o sitemap (home com barra final).
+  const canonical = `${siteConfig.url}${path === "/" ? "/" : path}`
+  // Title retornado SEM sufixo "| Toolium": o layout.tsx aplica o template "%s | Toolium".
+  // Exceção: títulos que já contêm "Toolium" usam title.absolute para bypass do template
+  // (evita "Sobre o Toolium | Toolium" duplicado — mas mantém correto quando há nome próprio).
+  const containsBrand = title.includes("Toolium")
+  const titleField = containsBrand
+    ? { absolute: title }
+    : title
+  // OG/Twitter não usam o template do layout, então o sufixo é adicionado manualmente.
+  const fullTitle = containsBrand ? title : `${title} | Toolium`
 
   return {
-    title: fullTitle,
+    title: titleField,
     description,
     keywords: keywords ?? siteConfig.keywords,
     authors: [{ name: siteConfig.author.name }],
     creator: siteConfig.author.name,
     publisher: siteConfig.publisher,
     alternates: {
-      canonical: url,
+      canonical,
     },
     robots: noIndex
       ? { index: false, follow: false }
@@ -84,7 +91,7 @@ export function buildMetadata({
     openGraph: {
       type: "website",
       locale: "pt_BR",
-      url,
+      url: canonical,
       title: fullTitle,
       description,
       siteName: siteConfig.name,
