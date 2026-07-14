@@ -6,6 +6,35 @@
 
 ---
 
+## [Sprint 11] — Release Manager / Deploy Readiness
+
+- **Data**: sprint 11
+- **Responsável**: Release Manager
+- **Tipo**: Validação de deploy (muito baixo risco — apenas validação + 2 correções de release em package.json)
+
+### Resumo
+Auditoria de infraestrutura de deploy validou 83/90 itens do Deploy Checklist (7 pendentes são operacionais pós-deploy na Vercel). Build de produção executado com sucesso (`next build` exit 0): 32 ferramentas + 5 categorias SSG + 6 estáticas + 1 dinâmica (/api órfã). Lint limpo, tsc src/ limpo. Nenhuma variável de ambiente obrigatória ausente (lib/db.ts órfão é tree-shaken; NODE_ENV é definido pela Vercel). 2 correções de release aplicadas: `package.json` name → "toolium", version → "1.0.0". Status: READY FOR DEPLOY.
+
+### Arquivos modificados
+- `package.json` — `name: "nextjs_tailwind_shadcn_ts"` → `"toolium"`; `version: "0.2.0"` → `"1.0.0"`
+
+### Arquivos criados
+- `docs/DEPLOY_CHECKLIST.md` (83/90 itens concluídos)
+- `docs/SPRINT_11_DEPLOY_READINESS.md`
+
+### Validação
+- `next build` → ✅ exit 0, 43+ páginas SSG
+- `bun run lint` → ✅ 0 erros, 0 warnings
+- `bunx tsc --noEmit` (`src/`) → ✅ 0 erros
+- 6 metadata routes → ✅ todas HTTP 200
+- 5 headers de segurança → ✅ servidos
+- Variáveis obrigatórias → ✅ nenhuma ausente (DATABASE_URL não necessária)
+- Dev server → ✅ home 200
+
+### Status: READY FOR DEPLOY
+
+---
+
 ## [Etapa 10] — Lead QA Engineer (Release v1.0)
 
 - **Data**: etapa 10
