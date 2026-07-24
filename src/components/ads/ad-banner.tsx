@@ -29,19 +29,20 @@ export function AdBanner({
   label = "Publicidade",
 }: AdBannerProps) {
   const insRef = React.useRef<HTMLModElement>(null)
-  const [hasAdSense, setHasAdSense] = React.useState(false)
+  
+  // Leitura síncrona e segura para SSR (Next.js App Router)
+  const hasAdSense = typeof window !== "undefined" && Array.isArray(window.adsbygoogle)
 
   React.useEffect(() => {
-    if (typeof window === "undefined") return
-    if (window.adsbygoogle) {
-      setHasAdSense(true)
-      try {
-        ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-      } catch {
-        /* sem anúncio disponível */
-      }
+    // O efeito agora é usado apenas para sincronizar com o sistema externo (AdSense)
+    if (!hasAdSense) return
+
+    try {
+      ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+    } catch {
+      /* Falha silenciosa caso o slot esteja bloqueado ou inválido */
     }
-  }, [])
+  }, [hasAdSense])
 
   return (
     <aside
